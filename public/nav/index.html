@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="zhongxia,导航网,前端">
+    <meta name="author" content="zhongxia,导航网,前端">
+    <link rel="icon" href="../../favicon.ico">
+    <title>zhongxia导航网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="lib/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="lib/ie-emulation-modes-warning.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">导航栏</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <a class="navbar-brand" href="http://www.zhongxia.duapp.com/nav/">zhongxia导航网</a> -->
+                <a id="id_brand" class="navbar-brand" href="http://127.0.0.1:18080/nav/">zhongxia导航网</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" id="id_nav_top">
+                    <!-- TODO:模板生成 -->
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar" id="id_nav_sidebar">
+                    <!-- TODO：模板生成 -->
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <a href="" name="nav_kjj"></a>
+                <h1 class="page-header">常用框架集</h1>
+                <div class="row placeholders" id="id_kjj">
+                    <!-- TODO:模板生成 -->
+                </div>
+                <a href="" name="nav_bkll"></a>
+                <h2 class="sub-header">博客列表</h2>
+                <div class="blog-responsive" id="id_bkll">
+                    <!-- TODO:模板生成 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~handlebar template start~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <div id="template"></div>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~handlebar template end~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="lib/ie10-viewport-bug-workaround.js"></script>
+    <!-- handlebar模板 -->
+    <script src="http://apps.bdimg.com/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
+    <!-- 自定义的脚本 -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#template').load('template/template.html', function() {
+            $.getScript('js/index.js');
+        });
+    });
+    </script>
+</body>
+
+</html>
