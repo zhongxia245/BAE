@@ -746,7 +746,7 @@ var getIndexOfArrayById = function(arr, id) {
     }
     return -1;
 }
-
+//设置右键菜单
 var setRightMenu = function(menu) {
     $("#desk").smartMenu(menu.bodymenudata, {
         name: "body"
