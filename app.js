@@ -8,6 +8,8 @@ var hbs = require('hbs');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var models = require('./models/conn');
+
 
 
 var app = express();
