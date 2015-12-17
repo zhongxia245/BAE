@@ -123,7 +123,7 @@ router.get('/index', function(req, res, next) {
         articles: [{
             title: "浅谈：html5和html的区别",
             url: "index/new",
-            imgPath: "images/s1.jpg",
+            imgPath: "blog/images/s1.jpg",
             summary: '最近看群里聊天聊得最火热的莫过于手机网站和html5这两个词。可能有人会问，这两者有什么关系呢？随着这移动互联 网快速发展的时代，尤其是4G时代已经来临的时刻，加上微软对"XP系统"不提供更新补丁、维护的情况下。 html5+css3也逐渐的成为新一代web前端技术.....',
             author: "zhongxia",
             time: "2015-12-05",
@@ -131,7 +131,7 @@ router.get('/index', function(req, res, next) {
         }, {
             title: "浅谈：html5和html的区别",
             url: "index/new",
-            imgPath: "images/s1.jpg",
+            imgPath: "blog/images/s1.jpg",
             summary: '最近看群里聊天聊得最火热的莫过于手机网站和html5这两个词。可能有人会问，这两者有什么关系呢？随着这移动互联 网快速发展的时代，尤其是4G时代已经来临的时刻，加上微软对"XP系统"不提供更新补丁、维护的情况下。 html5+css3也逐渐的成为新一代web前端技术.....',
             author: "zhongxia",
             time: "2015-12-05",
@@ -139,7 +139,7 @@ router.get('/index', function(req, res, next) {
         }, {
             title: "浅谈：html5和html的区别",
             url: "index/new",
-            imgPath: "images/s1.jpg",
+            imgPath: "blog/images/s1.jpg",
             summary: '最近看群里聊天聊得最火热的莫过于手机网站和html5这两个词。可能有人会问，这两者有什么关系呢？随着这移动互联 网快速发展的时代，尤其是4G时代已经来临的时刻，加上微软对"XP系统"不提供更新补丁、维护的情况下。 html5+css3也逐渐的成为新一代web前端技术.....',
             author: "zhongxia",
             time: "2015-12-05",
@@ -147,7 +147,7 @@ router.get('/index', function(req, res, next) {
         }, {
             title: "浅谈：html5和html的区别",
             url: "index/new",
-            imgPath: "images/s1.jpg",
+            imgPath: "blog/images/s1.jpg",
             summary: '最近看群里聊天聊得最火热的莫过于手机网站和html5这两个词。可能有人会问，这两者有什么关系呢？随着这移动互联 网快速发展的时代，尤其是4G时代已经来临的时刻，加上微软对"XP系统"不提供更新补丁、维护的情况下。 html5+css3也逐渐的成为新一代web前端技术.....',
             author: "zhongxia",
             time: "2015-12-05",
@@ -155,7 +155,7 @@ router.get('/index', function(req, res, next) {
         }, {
             title: "浅谈：html5和html的区别",
             url: "index/new",
-            imgPath: "images/s1.jpg",
+            imgPath: "blog/images/s1.jpg",
             summary: '最近看群里聊天聊得最火热的莫过于手机网站和html5这两个词。可能有人会问，这两者有什么关系呢？随着这移动互联 网快速发展的时代，尤其是4G时代已经来临的时刻，加上微软对"XP系统"不提供更新补丁、维护的情况下。 html5+css3也逐渐的成为新一代web前端技术.....',
             author: "段亮",
             time: "2015-12-05",
@@ -163,7 +163,7 @@ router.get('/index', function(req, res, next) {
         }, {
             title: "浅谈：html5和html的区别",
             url: "index/new",
-            imgPath: "images/s1.jpg",
+            imgPath: "blog/images/s1.jpg",
             summary: '最近看群里聊天聊得最火热的莫过于手机网站和html5这两个词。可能有人会问，这两者有什么关系呢？随着这移动互联 网快速发展的时代，尤其是4G时代已经来临的时刻，加上微软对"XP系统"不提供更新补丁、维护的情况下。 html5+css3也逐渐的成为新一代web前端技术.....',
             author: "段亮",
             time: "2015-12-05",
@@ -171,7 +171,7 @@ router.get('/index', function(req, res, next) {
         }, {
             title: "浅谈：html5和html的区别",
             url: "index/new",
-            imgPath: "images/s1.jpg",
+            imgPath: "blog/images/s1.jpg",
             summary: '最近看群里聊天聊得最火热的莫过于手机网站和html5这两个词。可能有人会问，这两者有什么关系呢？随着这移动互联 网快速发展的时代，尤其是4G时代已经来临的时刻，加上微软对"XP系统"不提供更新补丁、维护的情况下。 html5+css3也逐渐的成为新一代web前端技术.....',
             author: "段亮",
             time: "2015-12-05",
@@ -234,195 +234,195 @@ router.get('/xc', function(req, res, next) {
     res.render('blog/xc', {
         title: 'blog xc',
         items: [{
-            imgPath: "images/photo/1.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/1.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/2.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/2.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/3.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/3.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/4.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/4.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/5.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/5.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/6.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/6.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/7.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/7.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/1.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/1.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/2.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/2.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/3.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/3.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/4.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/4.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/5.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/5.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/6.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/6.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/7.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/7.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/1.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/1.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/2.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/2.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/3.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/3.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/4.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/4.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/5.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/5.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/6.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/6.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/7.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/7.jpg",
+            alt: "blog/images/photo/8.jpg"
         }],
         lazyItems: [{
-            imgPath: "images/photo/8.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/8.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/7.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/7.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/6.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/6.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/5.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/5.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/4.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/4.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/3.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/3.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/2.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/2.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/8.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/8.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/7.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/7.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/6.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/6.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/5.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/5.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/4.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/4.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/3.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/3.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/2.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/2.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/8.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/8.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/7.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/7.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/6.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/6.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/5.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/5.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/4.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/4.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/3.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/3.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/2.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/2.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/8.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/8.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/7.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/7.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/6.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/6.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/5.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/5.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/4.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/4.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/3.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/3.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/2.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/2.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/8.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/8.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/7.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/7.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/6.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/6.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/5.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/5.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/4.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/4.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/3.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/3.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/2.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/2.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/8.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/8.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/7.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/7.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/6.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/6.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/5.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/5.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/4.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/4.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/3.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/3.jpg",
+            alt: "blog/images/photo/8.jpg"
         }, {
-            imgPath: "images/photo/2.jpg",
-            alt: "images/photo/8.jpg"
+            imgPath: "blog/images/photo/2.jpg",
+            alt: "blog/images/photo/8.jpg"
         }]
     });
 });
@@ -440,34 +440,34 @@ router.get('/riji', function(req, res, next) {
         title: 'blog riji',
         items: [{
             content: "时间好象一把尺子，它能衡量奋斗者前进的进程。时间如同一架天平，它能称量奋斗者成果的重量；时间就像一把皮鞭，它能鞭策我们追赶人生的目标。时间犹如一面战鼓，它能激励我们加快前进的脚步。",
-            imgPath: "images/my_1.jpg"
+            imgPath: "blog/images/my_1.jpg"
         }, {
             content: "时间好象一把尺子，它能衡量奋斗者前进的进程。时间如同一架天平，它能称量奋斗者成果的重量；时间就像一把皮鞭，它能鞭策我们追赶人生的目标。时间犹如一面战鼓，它能激励我们加快前进的脚步。",
-            imgPath: "images/my_1.jpg"
+            imgPath: "blog/images/my_1.jpg"
         }, {
             content: "时间好象一把尺子，它能衡量奋斗者前进的进程。时间如同一架天平，它能称量奋斗者成果的重量；时间就像一把皮鞭，它能鞭策我们追赶人生的目标。时间犹如一面战鼓，它能激励我们加快前进的脚步。",
-            imgPath: "images/my_1.jpg"
+            imgPath: "blog/images/my_1.jpg"
         }, {
             content: "时间好象一把尺子，它能衡量奋斗者前进的进程。时间如同一架天平，它能称量奋斗者成果的重量；时间就像一把皮鞭，它能鞭策我们追赶人生的目标。时间犹如一面战鼓，它能激励我们加快前进的脚步。",
-            imgPath: "images/my_1.jpg"
+            imgPath: "blog/images/my_1.jpg"
         }, {
             content: "时间好象一把尺子，它能衡量奋斗者前进的进程。时间如同一架天平，它能称量奋斗者成果的重量；时间就像一把皮鞭，它能鞭策我们追赶人生的目标。时间犹如一面战鼓，它能激励我们加快前进的脚步。",
-            imgPath: "images/my_1.jpg"
+            imgPath: "blog/images/my_1.jpg"
         }, {
             content: "时间好象一把尺子，它能衡量奋斗者前进的进程。时间如同一架天平，它能称量奋斗者成果的重量；时间就像一把皮鞭，它能鞭策我们追赶人生的目标。时间犹如一面战鼓，它能激励我们加快前进的脚步。",
-            imgPath: "images/my_1.jpg"
+            imgPath: "blog/images/my_1.jpg"
         }, {
             content: "时间好象一把尺子，它能衡量奋斗者前进的进程。时间如同一架天平，它能称量奋斗者成果的重量；时间就像一把皮鞭，它能鞭策我们追赶人生的目标。时间犹如一面战鼓，它能激励我们加快前进的脚步。",
-            imgPath: "images/my_1.jpg"
+            imgPath: "blog/images/my_1.jpg"
         }, {
             content: "时间好象一把尺子，它能衡量奋斗者前进的进程。时间如同一架天平，它能称量奋斗者成果的重量；时间就像一把皮鞭，它能鞭策我们追赶人生的目标。时间犹如一面战鼓，它能激励我们加快前进的脚步。",
-            imgPath: "images/my_1.jpg"
+            imgPath: "blog/images/my_1.jpg"
         }, {
             content: "时间好象一把尺子，它能衡量奋斗者前进的进程。时间如同一架天平，它能称量奋斗者成果的重量；时间就像一把皮鞭，它能鞭策我们追赶人生的目标。时间犹如一面战鼓，它能激励我们加快前进的脚步。",
-            imgPath: "images/my_1.jpg"
+            imgPath: "blog/images/my_1.jpg"
         }, {
             content: "时间好象一把尺子，它能衡量奋斗者前进的进程。时间如同一架天平，它能称量奋斗者成果的重量；时间就像一把皮鞭，它能鞭策我们追赶人生的目标。时间犹如一面战鼓，它能激励我们加快前进的脚步。",
-            imgPath: "images/my_1.jpg"
+            imgPath: "blog/images/my_1.jpg"
         }]
     });
 });
