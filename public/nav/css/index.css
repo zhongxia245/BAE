@@ -1,3 +1,29 @@
 body {
-	font-family: '微软雅黑';
+    font-family: '微软雅黑';
+}
+.thumbnail {
+    position: relative;
+}
+.thumbnail>p {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 0 0 -50%;
+    text-align: center;
+    background: #000;
+    color: #FFF;
+    border-radius: 4px;
+    text-shadow: 2px 2px 5px black;
+    filter: alpha(Opacity=40);
+    -moz-opacity: 0.4;
+    opacity: 0.4;
+}
+.thumbnail:hover>p {
+    filter: alpha(Opacity=90);
+    -moz-opacity: 0.9;
+    opacity: 0.9;
+    background-color: #337ab7;
 }

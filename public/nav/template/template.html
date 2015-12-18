@@ -2,9 +2,9 @@
 <script id="nav" type="text/x-handlebars-template">
     {{#each}} 
 	    {{#if active}}
-	    <li class="active"><a href="{{url}}">{{title}}</a></li>
+	    <li class="active"><a href="{{url}}" name="{{name}}">{{title}}</a></li>
 	    {{else}}
-	    <li><a href="{{url}}">{{title}}</a></li>
+	    <li><a href="{{url}}" name="{{name}}">{{title}}</a></li>
 	    {{/if}} 
     {{/each}}
 </script>
@@ -12,8 +12,9 @@
 <script id="nav_kjj" type="text/x-handlebars-template">
     {{#each}}
     <div class="col-xs-6  col-md-3">
-        <a href="{{url}}" class="thumbnail">
+        <a href="{{url}}" class="thumbnail" target="_blank">
             <img data-src="holder.js/100%x180" alt="{{alt}}" src="{{img}}" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
+        	<p>{{alt}}</p>
         </a>
     </div>
     {{/each}}
@@ -23,9 +24,9 @@
     <div class="list-group">
         {{#each}}
 	        {{#if active}}
-		    <a href="{{url}}" class="list-group-item active"><span class="badge">{{count}}</span>{{title}}</a>
+		    <a href="{{url}}" class="list-group-item active" target="_blank"><span class="badge">{{count}}</span>{{title}}</a>
 		    {{else}}
-		    <a href="{{url}}" class="list-group-item"><span class="badge">{{count}}</span>{{title}}</a>
+		    <a href="{{url}}" class="list-group-item" target="_blank"><span class="badge">{{count}}</span>{{title}}</a>
 		    {{/if}} 
         {{/each}}
     </div>

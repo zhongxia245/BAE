@@ -12,6 +12,16 @@
             console.log('Not Find ID:' + tmp_selector + '> template....');
         }
     }
+    exports.scrollTo = function(selector, duration, top) {
+        duration = duration || 500;
+        top = top || 139;
+        var offset_top = $(selector).offset().top;
+        console.log(offset_top);
+        $('html,body').animate({
+            scrollTop: offset_top - top
+        }, duration);
+        return false;
+    }
 })($, window);
 // 顶部列表
 $.getJSON('data/nav_top.json', function(json) {
@@ -20,12 +30,26 @@ $.getJSON('data/nav_top.json', function(json) {
 // 左侧列表
 $.getJSON('data/nav_left.json', function(json) {
     window.render('#id_nav_sidebar', '#nav', json);
+    $.each(json, function(index, item) {
+        $.getJSON(item.json, function(data) {
+            window.render(item.name, item.template, data);
+        });
+    });
 });
-// 常用框架集
-$.getJSON('data/kjj.json', function(json) {
-    window.render('#id_kjj', '#nav_kjj', json);
+$('#id_nav_sidebar').bind('click', function(e) {
+    e = e || window.event;
+    var $target = $(e.target);
+    $target.parent().siblings().removeClass('active');
+    $target.parent().addClass('active');
+    var name = $target.attr('name');
+    scrollTo(name);
 });
-// 博客列表
-$.getJSON('data/bkll.json', function(json) {
-    window.render('#id_bkll', '#nav_bkll', json);
-});
+
+// // 常用框架集
+// $.getJSON('data/kjj.json', function(json) {
+//     window.render('#id_kjj', '#nav_kjj', json);
+// });
+// // 博客列表
+// $.getJSON('data/bkll.json', function(json) {
+//     window.render('#id_bkll', '#nav_bkll', json);
+// });

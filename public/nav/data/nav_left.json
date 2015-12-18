@@ -1,8 +1,20 @@
 [{
     "url": "#",
-    "title": "常用框架集",
-    "active": true
+    "name": "#id_tool",
+    "title": "常用工具集",
+    "active": true,
+    "template": "#nav_kjj",
+    "json": "data/list/tool.json"
 }, {
-    "url": "#nav_bkll",
-    "title": "博客列表"
+    "url": "#",
+    "name": "#id_kjj",
+    "title": "常用框架集",
+    "template": "#nav_kjj",
+    "json": "data/list/kjj.json"
+}, {
+    "url": "#",
+    "name": "#id_bkll",
+    "title": "博客列表",
+    "template": "#nav_bkll",
+    "json": "data/list/bkll.json"
 }]
