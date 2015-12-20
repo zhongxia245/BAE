@@ -113,7 +113,7 @@ app.use(function(req, res, next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.redirect("/index");
+    return res.redirect("/index");
 });
 
 /* GET home page. */

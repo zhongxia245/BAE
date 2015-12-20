@@ -27,3 +27,6 @@ body {
     opacity: 0.9;
     background-color: #337ab7;
 }
+.list-group-item>.badge {
+    background-color: cadetblue;
+}

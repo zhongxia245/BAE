@@ -17,7 +17,7 @@
         top = top || 139;
         var offset_top = $(selector).offset().top;
         console.log(offset_top);
-        $('html,body').animate({
+        $('body').animate({
             scrollTop: offset_top - top
         }, duration);
         return false;

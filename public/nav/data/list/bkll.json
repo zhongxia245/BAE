@@ -1,5 +1,26 @@
 [{
     "url": "http://jikey.cnblogs.com/",
-    "title": "博客园~豪情",
-    "count": 14
+    "name": "博客园~豪情",
+    "title":"前端各种入门知识，已经JS讨论群组织者，群的氛围很好，每月有分享知识",
+    "count": 8
+}, {
+    "url": "http://ued.taobao.org/blog/",
+    "name": "淘宝网UED",
+    "title":"淘宝前端的博客",
+    "count": 8
+}, {
+    "url": "http://www.cnblogs.com/TomXu/",
+    "name": "博客园~汤姆大叔",
+    "title":".NET,以及JavaScript",
+    "count": 6
+}, {
+    "url": "http://www.cnblogs.com/bigbearbb/",
+    "name": "博客园~大熊君",
+    "title":"NodeJS,HTML5各种系列的教程文章，也是一个前端群的组织者",
+    "count": 6
+}, {
+    "url": "http://www.cnblogs.com/yexiaochai/",
+    "name": "博客园~叶小钗",
+    "title":"nodejs、单页应用框架、设计思想培养",
+    "count": 6
 }]

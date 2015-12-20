@@ -1,4 +1,4 @@
-var blog = (function(zx) {
+var blog = (function (zx) {
     zx.author = "zhongxia";
     zx.createTime = "2015/12/04 21:30";
     zx.version = "1.0.0";
@@ -13,7 +13,7 @@ var blog = (function(zx) {
      * @param  {[string]} type [资源类型，plugin/url/js/css]
      * @return {[string]}      [返回绝对路径]
      */
-    zx.getAbsPath = function(path, type) {
+    zx.getAbsPath = function (path, type) {
         switch (type) {
             case "url": //HTTP 地址
                 return zx.basePath + zx.urlBasePath + path + "";
@@ -32,7 +32,7 @@ var blog = (function(zx) {
         }
         return ""
     }
-    zx.loadCSS = function(path) {
+    zx.loadCSS = function (path) {
         if (!path || path.length === 0) {
             throw new Error('argument "path" is required !');
         }
@@ -43,7 +43,7 @@ var blog = (function(zx) {
         link.type = 'text/css';
         head.appendChild(link);
     }
-    zx.loadJS = function(path) {
+    zx.loadJS = function (path) {
         if (!path || path.length === 0) {
             throw new Error('argument "path" is required !');
         }
@@ -86,3 +86,10 @@ var blog = (function(zx) {
 
     return zx;
 }(blog || {}));
+
+var config = {
+    blog: blog,
+    navBasePath: ''
+}
+
+module.exports = config;
