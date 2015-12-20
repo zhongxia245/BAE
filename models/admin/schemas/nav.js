@@ -5,13 +5,28 @@ var mongoose = require('mongoose');
  * @type {mongoose}
  */
 var NavSchema = new mongoose.Schema({
-    name: {type: String},
-    title: {type: String},
-    url: {type: String},
-    category: {type: String},
-    count: {type: Number},
-    img: {type: String, default: 'img/kancloud.png'},
-    remark: {type: String},
+    name: {
+        type: String
+    },
+    title: {
+        type: String
+    },
+    url: {
+        type: String
+    },
+    category: {
+        type: String
+    },
+    count: {
+        type: Number
+    },
+    img: {
+        type: String,
+        default: 'img/kancloud.png'
+    },
+    remark: {
+        type: String
+    },
     meta: {
         createAt: {
             type: Date,
@@ -57,6 +72,38 @@ NavSchema.statics = {
         return this
             .remove({})
             .exec(cb);
+    },
+    execPageQuery: function (currentPage, pageSize, conditions, fields, options, callback) {
+        var cb = function (err, rs) {
+            var page = {}; //总页数 总条数 集合
+            page.total = rs.length;
+            page.rows = rs;
+            callback(err, page);
+        };
+        if ('function' == typeof conditions) {
+            callback = conditions;
+            conditions = {};
+            fields = null;
+            options = null;
+        } else if ('function' == typeof fields) {
+            callback = fields;
+            fields = null;
+            options = null;
+        } else if ('function' == typeof options) {
+            callback = options;
+            options = null;
+        }
+        var StartLine = (currentPage - 1) * pageSize;
+        var m = this;
+        if ('function' == typeof conditions) {
+            m.find({}).limit(pageSize).skip(StartLine).exec(cb);
+        } else if ('function' == typeof fields) {
+            m.find(conditions).limit(pageSize).skip(StartLine).exec(cb);
+        } else if ('function' == typeof options) {
+            m.find(conditions, fields).limit(pageSize).skip(StartLine).exec(cb);
+        } else {
+            m.find(conditions, fields, options).limit(pageSize).skip(StartLine).exec(cb);
+        }
     }
 }
 
