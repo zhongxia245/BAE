@@ -74,12 +74,8 @@ NavSchema.statics = {
             .exec(cb);
     },
     execPageQuery: function (currentPage, pageSize, conditions, fields, options, callback) {
-        var cb = function (err, rs) {
-            var page = {}; //总页数 总条数 集合
-            page.total = rs.length;
-            page.rows = rs;
-            callback(err, page);
-        };
+        var page = {}; //总页数 总条数 集合
+        //设置参数
         if ('function' == typeof conditions) {
             callback = conditions;
             conditions = {};
@@ -95,6 +91,26 @@ NavSchema.statics = {
         }
         var StartLine = (currentPage - 1) * pageSize;
         var m = this;
+
+
+        //通过回调执行两个方法，保证同步
+        var cb = function (err, rs) {
+            if(err){
+                console.log(err);
+                return;
+            }
+            page.rows = rs;
+            m.count(conditions,function(err1,rs){
+                if(err1){
+                    console.log(err1);
+                    return;
+                }
+                page.total = rs;
+                callback(err1, page);
+            });
+        };
+
+
         if ('function' == typeof conditions) {
             m.find({}).limit(pageSize).skip(StartLine).exec(cb);
         } else if ('function' == typeof fields) {
