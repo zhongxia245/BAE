@@ -7,6 +7,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     hbs = require('hbs'),
 
+    config = require('./config'),
+    mongoosekeeper = require('./lib/mongoosekeeper'),
     routes = require('./routes/index'),
     adminRoutes = require('./routes/admin/index'),
     users = require('./routes/users');
@@ -16,14 +18,6 @@ var express = require('express'),
 //连接数据库[后期改成BAE上的mongodb数据库，链接]
 //mongoose.connect('mongodb://localhost/bae');   //本地可以使用，但是在BAE上报错
 
-//var mongoosekeeper = require('./lib/mongoosekeeper');
-//mongoosekeeper.config({
-//    "host": "mongo.duapp.com",
-//    "database": "fZelkgarNLTjLCCFIbdX",
-//    "userid": "4a2a3087b2bc47a4b7f09e43c41073f3",
-//    "password": "9ea7aee739134ba5a9a1819c0f2d1c86",
-//    "port": 8908
-//});
 var app = express();
 
 // view engine setup
@@ -42,10 +36,14 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+mongoosekeeper.config(config.localDb);
 
 app.use('/', routes);
 app.use('/', adminRoutes);
 app.use('/users', users);
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

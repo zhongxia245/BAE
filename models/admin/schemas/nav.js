@@ -44,7 +44,7 @@ var NavSchema = new mongoose.Schema({
  * @param  保存
  * @return {[type]}       [description]
  */
-NavSchema.pre('save', function (next) {
+NavSchema.pre('save', function(next) {
     if (this.isNew) {
         this.meta.createAt = this.meta.updateAt = Date.now();
     } else {
@@ -55,25 +55,25 @@ NavSchema.pre('save', function (next) {
 });
 
 NavSchema.statics = {
-    fetch: function (cb) {
+    fetch: function(cb) {
         return this
             .find({})
             .sort('meta.updateAt')
             .exec(cb);
     },
-    findById: function (id, cb) {
+    findById: function(id, cb) {
         return this
             .findOne({
                 _id: id
             })
             .exec(cb);
     },
-    removeAll: function (cb) {
+    removeAll: function(cb) {
         return this
             .remove({})
             .exec(cb);
     },
-    execPageQuery: function (currentPage, pageSize, conditions, fields, options, callback) {
+    execPageQuery: function(currentPage, pageSize, conditions, fields, options, callback) {
         var page = {}; //总页数 总条数 集合
         //设置参数
         if ('function' == typeof conditions) {
@@ -81,11 +81,13 @@ NavSchema.statics = {
             conditions = {};
             fields = null;
             options = null;
-        } else if ('function' == typeof fields) {
+        }
+        else if ('function' == typeof fields) {
             callback = fields;
             fields = null;
             options = null;
-        } else if ('function' == typeof options) {
+        }
+        else if ('function' == typeof options) {
             callback = options;
             options = null;
         }
@@ -94,18 +96,18 @@ NavSchema.statics = {
 
 
         //通过回调执行两个方法，保证同步
-        var cb = function (err, rs) {
-            if(err){
+        var cb = function(err, rs) {
+            if (err) {
                 console.log(err);
                 return;
             }
-            page.rows = rs;
-            m.count(conditions,function(err1,rs){
-                if(err1){
+            page.Rows = rs;
+            m.count(conditions, function(err1, rs) {
+                if (err1) {
                     console.log(err1);
                     return;
                 }
-                page.total = rs;
+                page.Total = rs;
                 callback(err1, page);
             });
         };

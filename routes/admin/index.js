@@ -4,15 +4,16 @@
  */
 var express = require('express'),
     mongoose = require('mongoose'),
-    Model = require('../../models/admin/models/nav'),
+    mongoosekeeper = require('../../lib/mongoosekeeper'),
+    Model = require('../../models/admin/models/nav_bae'),
     router = express.Router(),
     basePath = "/admin", //基路径
-    ObjectId = mongoose.Schema.Types.ObjectId;
+    ObjectId = mongoose.Schema.Types.ObjectId;  //未使用到
 
 /**
  * 获取常用工具集的导航地址数据][前端表格控件，指定URL，居然用Post，吐了]
  */
-router.get(basePath + '/getNav.do', function (req, res, next) {
+router.get(basePath + '/getNav.do', function (req, res) {
     var criteria = req.query;
     var page = req.query.page;
     var pagesize = req.query.pagesize;
@@ -22,18 +23,15 @@ router.get(basePath + '/getNav.do', function (req, res, next) {
             condition[key] = criteria[key];
         }
     }
-    Model.execPageQuery(page, pagesize,condition,function (err, data) {
+    mongoosekeeper.use(function (proxy) {
+        Model.execPageQuery(page, pagesize, condition, proxy);
+    }, function (err, data) {
         if (err) {
             console.log(err);
-            return;
-        } else {
-            var returnData = {
-                Rows: data.rows,
-                Total: data.total
-            };
-            res.send(returnData);
+            throw err;
         }
-    })
+        res.send(data);
+    });
 });
 
 /**
@@ -41,12 +39,14 @@ router.get(basePath + '/getNav.do', function (req, res, next) {
  */
 router.post(basePath + '/addNav.do', function (req, res, next) {
     var doc = req.body;
-    Model.create(doc, function (error) {
-        if (error) {
-            console.log(error);
-            return;
+    mongoosekeeper.use(function (proxy) {
+        Model.create(doc, proxy);
+    }, function (err) {
+        if (err) {
+            console.log(err);
+            throw err;
         } else {
-            res.send(doc);
+            res.send(true);
         }
     });
 });
@@ -65,10 +65,13 @@ router.post(basePath + '/updateNav.do', function (req, res, next) {
     var options = {
         upsert: true
     };
-    Model.update(conditions, update, options, function (error) {
-        if (error) {
-            console.log(error);
-            return;
+
+    mongoosekeeper.use(function (proxy) {
+        Model.update(conditions, update, options, proxy);
+    }, function (err) {
+        if (err) {
+            console.log(err);
+            throw err;
         } else {
             res.send(true);
         }
@@ -79,10 +82,12 @@ router.post(basePath + '/updateNav.do', function (req, res, next) {
  * 删除
  */
 router.get(basePath + '/deleteNav.do', function (req, res, next) {
-    Model.remove({_id: req.query.id}, function (error) {
-        if (error) {
-            console.log(error);
-            return;
+    mongoosekeeper.use(function (proxy) {
+        Model.remove({_id: req.query.id}, proxy);
+    }, function (err) {
+        if (err) {
+            console.log(err);
+            throw err;
         } else {
             res.send(true);
         }
@@ -124,13 +129,15 @@ router.get(basePath + '/addTool.do', function (req, res, next) {
     for (var i = 0, length = datas.length; i < length; i++) {
         var doc = datas[i];
         doc.category = 'tool';
-        Model.create(doc, function (error) {
-            if (error) {
-                console.log(error);
-                return;
+        mongoosekeeper.use(function (proxy) {
+            Model.create(doc, proxy);
+        }, function (err) {
+            if (err) {
+                console.log(err);
+                throw err;
             } else {
                 console.log('save ok');
-                res.send('save ok');
+                res.send(true);
             }
         });
     }
@@ -166,13 +173,15 @@ router.get(basePath + '/addBKLL.do', function (req, res, next) {
     for (var i = 0, length = datas.length; i < length; i++) {
         var doc = datas[i];
         doc.category = 'bkll';
-        Model.create(doc, function (error) {
-            if (error) {
-                console.log(error);
-                return;
+        mongoosekeeper.use(function (proxy) {
+            Model.create(doc, proxy);
+        }, function (err) {
+            if (err) {
+                console.log(err);
+                throw err;
             } else {
                 console.log('save ok');
-                res.send('save ok');
+                res.send(true);
             }
         });
     }
@@ -191,13 +200,15 @@ router.get(basePath + '/addKKJ.do', function (req, res, next) {
     for (var i = 0, length = datas.length; i < length; i++) {
         var doc = datas[i];
         doc.category = 'kkj';
-        Model.create(doc, function (error) {
-            if (error) {
-                console.log(error);
-                return;
+        mongoosekeeper.use(function (proxy) {
+            Model.create(doc, proxy);
+        }, function (err) {
+            if (err) {
+                console.log(err);
+                throw err;
             } else {
                 console.log('save ok');
-                res.send('save ok');
+                res.send(true);
             }
         });
     }
