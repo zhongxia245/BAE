@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="../lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css"/>
+    <link href="../lib/ligerUI/skins/ligerui-icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css"/>
+    <link href="../lib/ligerUI/skins/gray2014/css/all.css" rel="stylesheet"/>
+    <link href="../css/index.css" rel="stylesheet"/>
+</head>
+
+<body style="overflow-x:hidden;">
+<div class="zx-loading" style="display:block" id="pageloading"></div>
+<div class="zx-clear"></div>
+<div class="tb_search">
+    导航类别:
+    <select id="category">
+        <option value="-1">==全部类别==</option>
+        <option value="tool">常用工具</option>
+        <option value="bkll">博客列表</option>
+        <option value="kkj">框架集</option>
+    </select>
+</div>
+<!--LigerUI 表格-->
+<div id="maingrid"></div>
+<!--添加，修改的表单-->
+<form id="form">
+    <table>
+        <tr>
+            <td>
+                <label for="name">导航名称:<span class="red">（*）</span> </label>
+            </td>
+            <td>
+                <input id="name" name="name" type="text" class="ui-textbox" validate="{required:true}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="url">导航地址:<span class="red">（*）</span> </label>
+            </td>
+            <td>
+                <input id="url" name="url" type="text" class="ui-textbox" validate="{required:true}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>导航类别:</td>
+            <td>
+                <select name="category">
+                    <option value="tool" selected="selected">常用工具</option>
+                    <option value="bkll">博客列表</option>
+                    <option value="kkj">框架集</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="title">导航备注: </label>
+            </td>
+            <td>
+                <textarea id="title" style="width:400px; height:80px;" name="title" class="ui-textarea"></textarea>
+            </td>
+        </tr>
+    </table>
+</form>
+<div style="display:none;">
+</div>
+<script src="../lib/jquery/jquery-1.9.0.min.js" type="text/javascript"></script>
+<script src="../lib/ligerUI/js/core/base.js" type="text/javascript"></script>
+<script src="../lib/ligerUI/js/ligerui.all.js" type="text/javascript"></script>
+<script src="../lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script>
+<script src="../lib/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
+<script src="../lib/jquery-validation/messages_cn.js" type="text/javascript"></script>
+<script src="../js/common.js" type="text/javascript"></script>
+<script src="../js/tbNav.js" type="text/javascript"></script>
+<script src="../CustomersData.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+body,
+html {
+    height: 100%;
+}
+
+body {
+    padding: 0px;
+    margin: 0;
+    overflow: hidden;
+}
+
+.zx-link {
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 10px;
+    text-decoration: underline;
+    color: #333;
+}
+
+.zx-link2 {
+    text-decoration: underline;
+    color: white;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.zx-layout-top {
+    background: #102A49;
+    color: White;
+}
+
+.zx-layout-bottom {
+    background: #E5EDEF;
+    text-align: center;
+}
+
+#pageloading {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: white url('../lib/images/loading.gif') no-repeat center;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+}
+
+.zx-link {
+    display: block;
+    line-height: 22px;
+    height: 22px;
+    padding-left: 16px;
+    border: 1px solid white;
+    margin: 4px;
+}
+
+.zx-link-over {
+    background: #FFEEAC;
+    border: 1px solid #DB9F00;
+}
+
+.zx-winbar {
+    background: #2B5A76;
+    height: 30px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    z-index: 99999;
+}
+
+.space {
+    color: #E7E7E7;
+}
+
+/* 顶部 */
+
+.zx-topmenu {
+    height: 50px;
+    line-height: 50px;
+    background: #479ac7;
+    position: relative;
+    border-top: 1px solid #1D438B;
+}
+
+.zx-topmenu a {
+    margin-left: 20px;
+    color: #FFF;
+}
+
+.zx-topmenu a:hover {
+    text-decoration: none;
+}
+
+.zx-topmenu-welcome {
+    position: absolute;
+    height: 24px;
+    line-height: 24px;
+    right: 30px;
+    top: 2px;
+    color: #070A0C;
+}
+
+.zx-topmenu-welcome a {
+    color: #E7E7E7;
+    text-decoration: underline
+}
+
+.body-gray2014 #framecenter {
+    margin-top: 3px;
+}
+
+.viewsourcelink {
+    background: #B3D9F7;
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 3px;
+    padding: 6px 4px;
+    color: #333;
+    text-decoration: underline;
+}
+
+.viewsourcelink-over {
+    background: #81C0F2;
+}
+
+.zx-topmenu-welcome label {
+    color: white;
+}
+
+#skinSelect {
+    margin-right: 6px;
+}
+
+/*表单样式  start*/
+.red {
+    color: red;
+}
+
+#form td {
+    padding-top: 5px;
+}
+
+/*表单样式  end*/
+
+/*表格搜索栏样式*/
+.tb_search {
+    height: 20px;
+    line-height: 20px;
+    font-size: 13px;
+    padding: 5px;
+    background: #E9E9E9;
+}
