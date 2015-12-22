@@ -36,7 +36,7 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoosekeeper.config(config.localDb);
+mongoosekeeper.config(config.baeDb);
 
 app.use('/', routes);
 app.use('/', adminRoutes);
