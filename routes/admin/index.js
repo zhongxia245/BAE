@@ -56,6 +56,7 @@ router.post(basePath + '/addNav.do', function (req, res, next) {
  */
 router.post(basePath + '/updateNav.do', function (req, res, next) {
     var doc = req.body;
+    console.log(new Date() + ":update param:" + doc)
     var conditions = {
         _id: doc._id
     };
@@ -73,6 +74,7 @@ router.post(basePath + '/updateNav.do', function (req, res, next) {
             console.log(err);
             throw err;
         } else {
+            console.log(new Date() + ":update success!:")
             res.send(true);
         }
     });
@@ -84,7 +86,7 @@ router.post(basePath + '/updateNav.do', function (req, res, next) {
 router.get(basePath + '/deleteNav.do', function (req, res, next) {
     var ids = req.query.id.split(',');
     mongoosekeeper.use(function (proxy) {
-        Model.remove({_id: {$in:ids}}, proxy);
+        Model.remove({_id: {$in: ids}}, proxy);
     }, function (err) {
         if (err) {
             console.log(err);

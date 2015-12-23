@@ -36,17 +36,17 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-if(config.type === 'dev'){
-    mongoosekeeper.config(config.localDb);
-}else if(config.type === 'bae'){
+if (process.env.PORT) {
+    console.log(new Date() + ':process.env.PORT:', process.env.PORT);
     mongoosekeeper.config(config.baeDb);
+} else {
+    console.log(new Date() + ':localhost');
+    mongoosekeeper.config(config.localDb);
 }
 
 app.use('/', routes);
 app.use('/', adminRoutes);
 app.use('/users', users);
-
-
 
 
 // catch 404 and forward to error handler
@@ -75,10 +75,10 @@ if (app.get('env') === 'development') {
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     console.log(err)
-    //res.render('error', {
-    //    message: err.message,
-    //    error: {}
-    //});
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
 
