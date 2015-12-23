@@ -45,9 +45,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //判断是BAE环境，还是开发环境
 if (config.type === 'bae') {
-    var log = require('./lib/log');
+   // var log = require('./lib/log');
+    //log.debug("bae");
     console.log(new Date() + ' : start BAE!');
-    log.debug("bae");
     mongoosekeeper.config(config.baeDb);
     //开发环境，则使用日志
 } else if (config.type === 'dev') {
