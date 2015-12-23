@@ -82,8 +82,9 @@ router.post(basePath + '/updateNav.do', function (req, res, next) {
  * 删除
  */
 router.get(basePath + '/deleteNav.do', function (req, res, next) {
+    var ids = req.query.id.split(',');
     mongoosekeeper.use(function (proxy) {
-        Model.remove({_id: req.query.id}, proxy);
+        Model.remove({_id: {$in:ids}}, proxy);
     }, function (err) {
         if (err) {
             console.log(err);

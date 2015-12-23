@@ -12,7 +12,7 @@ $(function () {
         heightDiff: -5,
         method: 'get',
         checkbox: true,
-        pageSize: 10,
+        pageSize: 20,
         rownumbers: true,
         columns: [{
             display: 'ID',
@@ -91,24 +91,6 @@ var tableHandler = (function () {
     var tableId = "maingrid",
         formId = "form";
 
-    //删除
-    function deleteRow() {
-        var table = new liger.get(tableId);
-        var selectRows = table.getSelectedRows();
-        $.ligerDialog.confirm('确定删除?', function (yes) {
-            if (yes) {
-                table.deleteSelectedRow();
-                var url = "../../deleteNav.do?id=" + selectRows[0]._id;
-                $.get(url, function (result) {
-                    window.zx.tip({
-                        content: "删除成功!"
-                    });
-                    table.reload();
-                })
-            }
-        });
-    }
-
     function setData(data) {
         var form = new liger.get(formId);
         form.setData(data);
@@ -136,6 +118,7 @@ var tableHandler = (function () {
                 text: '保存',
                 onclick: function (item, dialog) {
                     var form = new liger.get(formId);
+                    var table = new liger.get(tableId);
                     if (form.valid()) {
                         var data = form.getData();
                         var url = '../../admin/addNav.do';
@@ -202,6 +185,29 @@ var tableHandler = (function () {
                     setEmpty();
                 }
             }]
+        });
+    }
+
+    //删除
+    function deleteRow() {
+        var table = new liger.get(tableId);
+        var selectRows = table.getSelectedRows();
+        $.ligerDialog.confirm('确定删除?', function (yes) {
+            if (yes) {
+                var delIds = "";
+                for(var i=0;i<selectRows.length;i++){
+                    delIds += selectRows[i]._id+",";
+                }
+                delIds = delIds.substr(0,delIds.length-1);
+                var url = "../../admin/deleteNav.do?id=" + delIds;
+                $.get(url, function (result) {
+                    window.zx.tip({
+                        content: "删除成功!"
+                    });
+                    table.deleteSelectedRow();
+                    table.reload();
+                })
+            }
         });
     }
 
