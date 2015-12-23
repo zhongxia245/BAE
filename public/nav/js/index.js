@@ -31,7 +31,7 @@ $.getJSON('data/nav_top.json', function(json) {
 $.getJSON('data/nav_left.json', function(json) {
     window.render('#id_nav_sidebar', '#nav', json);
     $.each(json, function(index, item) {
-        $.getJSON(item.json, function(data) {
+        $.getJSON(item.rest, function(data) {
             window.render(item.name, item.template, data);
         });
     });

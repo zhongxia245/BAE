@@ -7,13 +7,12 @@ var express = require('express'),
     mongoosekeeper = require('../../lib/mongoosekeeper'),
     Model = require('../../models/admin/models/nav_bae'),
     router = express.Router(),
-    basePath = "/admin", //基路径
     ObjectId = mongoose.Schema.Types.ObjectId;  //未使用到
 
 /**
  * 获取常用工具集的导航地址数据][前端表格控件，指定URL，居然用Post，吐了]
  */
-router.get(basePath + '/getNav.do', function (req, res) {
+router.get('/getNav.do', function (req, res) {
     var criteria = req.query;
     var page = req.query.page;
     var pagesize = req.query.pagesize;
@@ -37,7 +36,7 @@ router.get(basePath + '/getNav.do', function (req, res) {
 /**
  * 添加导航数据
  */
-router.post(basePath + '/addNav.do', function (req, res, next) {
+router.post('/addNav.do', function (req, res, next) {
     var doc = req.body;
     mongoosekeeper.use(function (proxy) {
         Model.create(doc, proxy);
@@ -54,7 +53,7 @@ router.post(basePath + '/addNav.do', function (req, res, next) {
 /**
  * 修改
  */
-router.post(basePath + '/updateNav.do', function (req, res, next) {
+router.post('/updateNav.do', function (req, res, next) {
     var doc = req.body;
     console.log(new Date() + ":update param:" + doc)
     var conditions = {
@@ -83,7 +82,7 @@ router.post(basePath + '/updateNav.do', function (req, res, next) {
 /**
  * 删除
  */
-router.get(basePath + '/deleteNav.do', function (req, res, next) {
+router.get('/deleteNav.do', function (req, res, next) {
     var ids = req.query.id.split(',');
     mongoosekeeper.use(function (proxy) {
         Model.remove({_id: {$in: ids}}, proxy);
@@ -99,7 +98,7 @@ router.get(basePath + '/deleteNav.do', function (req, res, next) {
 
 
 /*******初始化之前的旧数据 Start****************/
-router.get(basePath + '/addTool.do', function (req, res, next) {
+router.get('/addTool.do', function (req, res, next) {
     var datas = [{
         "url": "http://tool.lu/js/",
         "name": "JS美化",
@@ -146,7 +145,7 @@ router.get(basePath + '/addTool.do', function (req, res, next) {
     }
 });
 
-router.get(basePath + '/addBKLL.do', function (req, res, next) {
+router.get('/addBKLL.do', function (req, res, next) {
     var datas = [{
         "url": "http://jikey.cnblogs.com/",
         "name": "博客园~豪情",
@@ -190,7 +189,7 @@ router.get(basePath + '/addBKLL.do', function (req, res, next) {
     }
 });
 
-router.get(basePath + '/addKKJ.do', function (req, res, next) {
+router.get('/addKKJ.do', function (req, res, next) {
     var datas = [{
         "url": "http://www.kancloud.cn/jikeytang/qq/87646",
         "name": "高级JS开发群资源",

@@ -11,14 +11,22 @@ var express = require('express'),
     mongoosekeeper = require('./lib/mongoosekeeper'),
     routes = require('./routes/index'),
     adminRoutes = require('./routes/admin/index'),
+    navRoutes = require('./restapi/nav'),
     users = require('./routes/users');
-// dbnav = require('./models/admin/mongose_demo');
-
-
-//连接数据库[后期改成BAE上的mongodb数据库，链接]
-//mongoose.connect('mongodb://localhost/bae');   //本地可以使用，但是在BAE上报错
 
 var app = express();
+
+if (config.cross_domain) {
+    //设置跨域访问
+    app.all('/rest/*', function (req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+        res.header("X-Powered-By", ' 3.2.1')
+        res.header("Content-Type", "application/json;charset=utf-8");
+        next();
+    });
+}
 
 // view engine setup
 hbs.registerPartials(__dirname + '/views/partials');
@@ -29,25 +37,28 @@ app.set('view engine', 'hbs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//判断是BAE环境，还是开发环境
 if (config.type === 'bae') {
-    console.log(new Date() + ':process.env.PORT:', process.env.PORT);
+    var log = require('./lib/log');
+    console.log(new Date() + ' : start BAE!');
+    log.debug("bae");
     mongoosekeeper.config(config.baeDb);
-} else if(config.type === 'dev') {
+    //开发环境，则使用日志
+} else if (config.type === 'dev') {
     console.log(new Date() + ':localhost');
     mongoosekeeper.config(config.localDb);
 }
 
 app.use('/', routes);
-app.use('/', adminRoutes);
+app.use('/admin', adminRoutes);
+app.use('/rest', navRoutes);
 app.use('/users', users);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -60,26 +71,26 @@ app.use(function (req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
+//if (app.get('env') === 'development') {
+//    app.use(function (err, req, res, next) {
+//        res.status(err.status || 500);
+//        res.render('error', {
+//            message: err.message,
+//            error: err
+//        });
+//    });
+//}
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    console.log(err)
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+//app.use(function (err, req, res, next) {
+//    res.status(err.status || 500);
+//    console.log(err)
+//    res.render('error', {
+//        message: err.message,
+//        error: {}
+//    });
+//});
 
 
 module.exports = app;
