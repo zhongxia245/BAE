@@ -36,7 +36,7 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-if (process.env.PORT) {
+if (process.env.APP_PORT) {
     console.log(new Date() + ':process.env.PORT:', process.env.PORT);
     mongoosekeeper.config(config.baeDb);
 } else {
