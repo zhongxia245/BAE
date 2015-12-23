@@ -27,7 +27,7 @@ router.get('/getNav.do', function (req, res) {
     }, function (err, data) {
         if (err) {
             console.log(err);
-            throw err;
+           
         }
         res.send(data);
     });
@@ -43,7 +43,7 @@ router.post('/addNav.do', function (req, res, next) {
     }, function (err) {
         if (err) {
             console.log(err);
-            throw err;
+           
         } else {
             res.send(true);
         }
@@ -55,7 +55,7 @@ router.post('/addNav.do', function (req, res, next) {
  */
 router.post('/updateNav.do', function (req, res, next) {
     var doc = req.body;
-    console.log(new Date() + ":update param:" + doc)
+    console.log(new Date() + ":update param:" + doc.title)
     var conditions = {
         _id: doc._id
     };
@@ -71,7 +71,7 @@ router.post('/updateNav.do', function (req, res, next) {
     }, function (err) {
         if (err) {
             console.log(err);
-            throw err;
+           
         } else {
             console.log(new Date() + ":update success!:")
             res.send(true);
@@ -89,7 +89,7 @@ router.get('/deleteNav.do', function (req, res, next) {
     }, function (err) {
         if (err) {
             console.log(err);
-            throw err;
+           
         } else {
             res.send(true);
         }
@@ -136,7 +136,7 @@ router.get('/addTool.do', function (req, res, next) {
         }, function (err) {
             if (err) {
                 console.log(err);
-                throw err;
+               
             } else {
                 console.log('save ok');
                 res.send(true);
@@ -180,7 +180,7 @@ router.get('/addBKLL.do', function (req, res, next) {
         }, function (err) {
             if (err) {
                 console.log(err);
-                throw err;
+               
             } else {
                 console.log('save ok');
                 res.send(true);
@@ -207,7 +207,7 @@ router.get('/addKKJ.do', function (req, res, next) {
         }, function (err) {
             if (err) {
                 console.log(err);
-                throw err;
+               
             } else {
                 console.log('save ok');
                 res.send(true);
