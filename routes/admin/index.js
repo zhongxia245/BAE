@@ -7,7 +7,7 @@ var express = require('express'),
     mongoosekeeper = require('../../lib/mongoosekeeper'),
     Model = require('../../models/admin/models/nav_bae'),
     router = express.Router(),
-    ObjectId = mongoose.Schema.Types.ObjectId;  
+    ObjectId = mongoose.Schema.Types.ObjectId;
 
 /**
  * 获取常用工具集的导航地址数据][前端表格控件，指定URL，居然用Post，吐了]
@@ -57,7 +57,7 @@ router.post('/updateNav.do', function (req, res, next) {
     var doc = req.body;
     console.log(new Date() + ":update param:" + doc.title)
     var conditions = {
-        _id: new ObjectId(doc._id)
+        _id: mongoose.Types.ObjectId(doc._id)
     };
     var update = {
         $set: doc
