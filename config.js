@@ -1,4 +1,5 @@
 module.exports = {
+    type: 'bae',   //bae  or  dev
     baeDb: {  //线上数据库账号密码
         "host": "mongo.duapp.com",
         "database": "fZelkgarNLTjLCCFIbdX",

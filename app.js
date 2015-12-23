@@ -36,10 +36,10 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-if (process.env.APP_PORT) {
+if (config.type === 'bae') {
     console.log(new Date() + ':process.env.PORT:', process.env.PORT);
     mongoosekeeper.config(config.baeDb);
-} else {
+} else if(config.type === 'dev') {
     console.log(new Date() + ':localhost');
     mongoosekeeper.config(config.localDb);
 }
