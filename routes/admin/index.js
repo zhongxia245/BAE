@@ -55,12 +55,19 @@ router.post('/addNav.do', function (req, res, next) {
  */
 router.post('/updateNav.do', function (req, res, next) {
     var doc = req.body;
+    var update = {};
+    for (var key in doc) {
+        if (doc.hasOwnProperty(key) && key != "_id") {
+            update[key] = doc[key];
+        }
+    }
+    var id = doc._id;
     console.log(new Date() + ":update param:" + doc.title)
     var conditions = {
-        _id: mongoose.Types.ObjectId(doc._id)
+        _id: mongoose.Types.ObjectId(id)
     };
     var update = {
-        $set: doc
+        $set: update
     };
     var options = {
         upsert: true
