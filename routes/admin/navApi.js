@@ -2,12 +2,12 @@
 /**
  * 后台管理的接口
  */
-var express = require('express'),
-    mongoose = require('mongoose'),
-    mongoosekeeper = require('../../lib/mongoosekeeper'),
-    Model = require('../../models/admin/models/nav_bae'),
-    router = express.Router(),
-    ObjectId = mongoose.Schema.Types.ObjectId;
+var express = require('express');
+var mongoose = require('mongoose');
+var mongoosekeeper = require('../../lib/mongoosekeeper');
+var Model = require('../../models/admin/models/nav_bae');
+var router = express.Router();
+var ObjectId = mongoose.Types.ObjectId;
 
 /**
  * 获取常用工具集的导航地址数据][前端表格控件，指定URL，居然用Post，吐了]
@@ -19,7 +19,9 @@ router.get('/getNav.do', function (req, res) {
     var condition = {};
     for (var key in criteria) {
         if (criteria.hasOwnProperty(key) && key != "page" && key != "pagesize" && key != "changepage") {
-            condition[key] = criteria[key];
+            if (criteria[key].length != 0) {
+                condition[key] = criteria[key];
+            }
         }
     }
     mongoosekeeper.use(function (proxy) {
@@ -27,7 +29,7 @@ router.get('/getNav.do', function (req, res) {
     }, function (err, data) {
         if (err) {
             console.log(err);
-           
+
         }
         res.send(data);
     });
@@ -43,7 +45,7 @@ router.post('/addNav.do', function (req, res, next) {
     }, function (err) {
         if (err) {
             console.log(err);
-           
+
         } else {
             res.send(true);
         }
@@ -64,7 +66,7 @@ router.post('/updateNav.do', function (req, res, next) {
     var id = doc._id;
     console.log(new Date() + ":update param:" + doc.title)
     var conditions = {
-        _id: mongoose.Types.ObjectId(id)
+        _id: ObjectId(id)
     };
     var update = {
         $set: update
@@ -78,7 +80,7 @@ router.post('/updateNav.do', function (req, res, next) {
     }, function (err) {
         if (err) {
             console.log(err);
-           
+
         } else {
             console.log(new Date() + ":update success!:")
             res.send(true);
@@ -96,13 +98,12 @@ router.get('/deleteNav.do', function (req, res, next) {
     }, function (err) {
         if (err) {
             console.log(err);
-           
+
         } else {
             res.send(true);
         }
     });
 });
-
 
 /*******初始化之前的旧数据 Start****************/
 router.get('/addTool.do', function (req, res, next) {
@@ -143,7 +144,7 @@ router.get('/addTool.do', function (req, res, next) {
         }, function (err) {
             if (err) {
                 console.log(err);
-               
+
             } else {
                 console.log('save ok');
                 res.send(true);
@@ -187,7 +188,7 @@ router.get('/addBKLL.do', function (req, res, next) {
         }, function (err) {
             if (err) {
                 console.log(err);
-               
+
             } else {
                 console.log('save ok');
                 res.send(true);
@@ -214,7 +215,7 @@ router.get('/addKKJ.do', function (req, res, next) {
         }, function (err) {
             if (err) {
                 console.log(err);
-               
+
             } else {
                 console.log('save ok');
                 res.send(true);
@@ -223,7 +224,5 @@ router.get('/addKKJ.do', function (req, res, next) {
     }
 });
 /*******初始化之前的旧数据 End****************/
-
-
 
 module.exports = router;

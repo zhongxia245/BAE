@@ -1,6 +1,7 @@
 $(function () {
     var tableId = "maingrid",
         formId = "form";
+    //初始化表格
     window.zx = window.zx || {};
 
     //刷新函数
@@ -10,9 +11,9 @@ $(function () {
             grid.options.parms = {"key": key};
         }
     }
-    //获取数据
-    var url = '../../admin/getNav.do';
 
+    //获取数据
+    var url = '../../admin/getCategory.do';
     $("#" + tableId).ligerGrid({
         url: url,
         selectRowButtonOnly: true,
@@ -20,70 +21,57 @@ $(function () {
         heightDiff: -5,
         method: 'get',
         checkbox: true,
+        enabledSort:false,
         pageSize: 20,
-        enabledSort: false,
         rownumbers: true,
-        onLoadData: loaddata,
-        columns: [
-            {display: 'ID', name: '_id', hide: true},
-            {display: '导航名称', name: 'name', align: 'center', width: 150},
-            {display: '导航分类', name: 'category', align: 'center', width: 80},
-            {display: '导航图片', name: 'img', align: 'left', width: 200},
-            {display: '导航地址', name: 'url', align: 'left', width: 200},
-            {display: '备注', name: 'title', align: 'left', width: 250}
-        ],
+        onLoadData: loaddata,  //刷新函数
+        columns: [{
+            display: 'ID',
+            name: '_id',
+            hide: true
+        }, {
+            display: '分类名称',
+            name: 'name',
+            align: 'center',
+            width: 150
+        }, {
+            display: '分类值',
+            name: 'value',
+            align: 'center',
+            width: 80
+        },{
+            display: '备注',
+            name: 'remark',
+            align: 'left',
+            width: 350
+        }],
         toolbar: {
-            items: [
-                {text: '增加', click: tableHandler.addClick, icon: 'add'},
-                {line: true},
-                {text: '修改', click: tableHandler.updateClick, icon: 'modify'},
-                {line: true},
-                {text: '删除', click: tableHandler.deleteRow, icon: 'delete'}
-            ]
+            items: [{
+                text: '增加',
+                click: tableHandler.addClick,
+                icon: 'add'
+            }, {
+                line: true
+            }, {
+                text: '修改',
+                click: tableHandler.updateClick,
+                icon: 'modify'
+            }, {
+                line: true
+            }, {
+                text: '删除',
+                click: tableHandler.deleteRow,
+                icon: 'delete'
+            }]
         }
     });
     $("#pageloading").hide();
 
-    //初始化分类下拉框
-    var categoryUrl = "../../admin/getCategory.do";
-    $.getJSON(categoryUrl, function (data) {
-        if (data) {
-            var arr = [];
-            for (var i = 0, length = data.Rows.length; i < length; i++) {
-                arr.push('<option value="' + data.Rows[i].value + '">' + data.Rows[i].name + '</option>')
-            }
-            var html = arr.join(' ');
-            //表单
-            var $form_category = $('#form_category');
-            $form_category.html(html);
-            //过滤的分类
-            var $category = $('#category');
-            $category.empty();
-            var html = '<option value="">==全部分类==</option>' +html;
-            $category.html(html);
-
-            //初始化表单
-            var form = $("#form").ligerForm({
-                validate: true
-            });
-            $('#form').hide();  //这个要放在生成表单后，否则无法把select生成ligerUI的控件
-        }
+    //初始化表单
+    var form = $("#form").ligerForm({
+        validate: true
     });
-
-    //初始化搜索栏事件
-    $('#category').on('change', function () {
-        var value = $(this).val(),
-            table = new liger.get(tableId),
-            condition = {
-                page: table.options.page,
-                pagesize: table.options.pageSize
-            };
-        if (value) {
-            condition.category = value;
-        }
-        table.loadServerData(condition);
-    });
-
+    $('#form').hide();
 });
 
 var tableHandler = (function () {
@@ -111,7 +99,7 @@ var tableHandler = (function () {
     function addClick(item) {
         $.ligerDialog.open({
             target: $('#form'),
-            height: 300,
+            height: 250,
             width: 540,
             buttons: [{
                 text: '保存',
@@ -120,7 +108,7 @@ var tableHandler = (function () {
                     var table = new liger.get(tableId);
                     if (form.valid()) {
                         var data = form.getData();
-                        var url = '../../admin/addNav.do';
+                        var url = '../../admin/addCategory.do';
                         $.post(url, data, function (result, textStatus, xhr) {
                             window.zx.tip({
                                 content: "保存成功"
@@ -156,7 +144,7 @@ var tableHandler = (function () {
         setData(oldData);
         $.ligerDialog.open({
             target: $('#form'),
-            height: 300,
+            height: 250,
             width: 540,
             buttons: [{
                 text: '保存',
@@ -165,7 +153,7 @@ var tableHandler = (function () {
                     if (form.valid()) {
                         var data = form.getData();
                         data._id = oldData._id;
-                        var url = '../../admin/updateNav.do';
+                        var url = '../../admin/updateCategory.do';
                         $.post(url, data, function (result) {
                             console.log(result);
                             window.zx.tip({
@@ -194,11 +182,11 @@ var tableHandler = (function () {
         $.ligerDialog.confirm('确定删除?', function (yes) {
             if (yes) {
                 var delIds = "";
-                for (var i = 0; i < selectRows.length; i++) {
-                    delIds += selectRows[i]._id + ",";
+                for(var i=0;i<selectRows.length;i++){
+                    delIds += selectRows[i]._id+",";
                 }
-                delIds = delIds.substr(0, delIds.length - 1);
-                var url = "../../admin/deleteNav.do?id=" + delIds;
+                delIds = delIds.substr(0,delIds.length-1);
+                var url = "../../admin/deleteCategory.do?id=" + delIds;
                 $.get(url, function (result) {
                     window.zx.tip({
                         content: "删除成功!"

@@ -1,5 +1,6 @@
 /**
  * Created by zhongxia on 2015/12/23.
+ * 这里实现的接口都是实现跨域的功能
  */
 'use strict';
 /**
@@ -31,8 +32,12 @@ router.get('/getNav.do', function (req, res) {
     });
 });
 
+/**
+ * 测试跨域是否可以用
+ * */
 router.post('/post.do', function (req, res) {
     var param = req.body;
     res.send(param);
 });
+
 module.exports = router;

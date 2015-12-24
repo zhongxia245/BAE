@@ -146,10 +146,9 @@ body {
 
 /*表格搜索栏样式*/
 .tb_search {
-    height: 20px;
-    line-height: 20px;
+    height: 30px;
+    line-height: 30px;
     font-size: 13px;
-    padding: 5px;
     background: #E9E9E9;
 }
 

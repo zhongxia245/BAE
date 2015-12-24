@@ -1,18 +1,21 @@
-var express = require('express'),
-    mongoose = require('mongoose'),
-    path = require('path'),
-    favicon = require('serve-favicon'),
-    logger = require('morgan'),
-    cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
-    hbs = require('hbs'),
-
-    config = require('./config'),
-    mongoosekeeper = require('./lib/mongoosekeeper'),
-    routes = require('./routes/index'),
-    adminRoutes = require('./routes/admin/index'),
-    navRoutes = require('./restapi/nav'),
-    users = require('./routes/users');
+var express = require('express');
+var mongoose = require('mongoose');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var hbs = require('hbs');
+//自定义的类库以及配置信息
+var config = require('./config');
+var mongoosekeeper = require('./lib/mongoosekeeper');
+//路由
+var routes = require('./routes/index');
+var users = require('./routes/users');
+//RESTAPI
+var navRoute = require('./restapi/nav');
+var adminRoute = require('./routes/admin/navApi');
+var categoryRoute = require('./routes/admin/categoryApi');
 
 var app = express();
 
@@ -42,7 +45,6 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 //判断是BAE环境，还是开发环境
 if (config.type === 'bae') {
    // var log = require('./lib/log');
@@ -56,8 +58,8 @@ if (config.type === 'bae') {
 }
 
 app.use('/', routes);
-app.use('/admin', adminRoutes);
-app.use('/rest', navRoutes);
+app.use('/admin', adminRoute); app.use('/admin', categoryRoute);
+app.use('/rest', navRoute);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

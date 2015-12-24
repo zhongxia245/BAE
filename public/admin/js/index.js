@@ -88,6 +88,9 @@ function f_addTab(tabid, text, url) {
     });
 }
 
+/*
+* 切换皮肤
+* */
 function addFrameSkinLink(tabid) {
     var prevHref = getLinkPrevHref(tabid) || "";
     var skin = getQueryString("skin");
