@@ -338,7 +338,7 @@ padding-right: 10px;
     background:url('../images/grid/grid-detail-open.gif') no-repeat 5px 5px;
 }
 
-.l-grid-row-cell-checkbox .l-grid-row-cell-inner{margin-left:0px; margin-right:0px;}
+.l-grid-row-cell-checkbox .l-grid-row-cell-inner{margin-left:0px; margin-right:0px;    height: 20px !important;}
 .l-grid-row-cell-checkbox span,.l-grid-hd-cell-checkbox .l-grid-hd-cell-inner div
 {
     display:block; width:13px; height:13px; background:url('../images/controls/checkbox.gif') no-repeat;
