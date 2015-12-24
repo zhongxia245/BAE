@@ -219,7 +219,7 @@ overflow: hidden;
 .l-grid1 .l-grid-body{overflow:hidden;}
 .l-grid1 .l-grid-detailpanel{border-right:1px solid white;}
 .l-frozen .l-grid2{position:absolute; top:0px; left:0px; width:100%; }
-.l-frozen .l-grid2 .l-grid-body{overflow-x:auto;}
+.l-frozen .l-grid2 .l-grid-body{overflow-x:hidden;}
 .l-frozen .l-grid1{position:absolute; top:0px; left:0px;display:block;}
  
 
