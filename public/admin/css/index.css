@@ -152,3 +152,8 @@ body {
     padding: 5px;
     background: #E9E9E9;
 }
+
+/*修改ligerUI  grid 的样式*/
+.l-grid-body>.l-grid-body-inner{
+	width: auto !important;
+}
