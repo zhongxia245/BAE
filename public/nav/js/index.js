@@ -27,7 +27,6 @@
         duration = duration || 500;
         top = top || 139;
         var offset_top = $(selector).offset().top;
-        console.log(offset_top);
         $('body').animate({
             scrollTop: offset_top - top
         }, duration);
@@ -93,12 +92,12 @@ $('#id_nav_sidebar').on('click', function (e) {
 });
 
 $('#go-top').on('click', function () {
-    scrollTo("#id_nav_top",300,200);
+    scrollTo("#top",300,200);
 });
 
 $(window).scroll(function () {
     var top = $(window).scrollTop();
-    if (top > 100) {
+    if (top > 400) {
         $('#go-top').show();
     } else {
         $('#go-top').hide();
