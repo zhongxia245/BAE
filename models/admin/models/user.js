@@ -3,7 +3,7 @@
  * 用户类
  */
 var mongokeeper = require('../../../lib/mongoosekeeper');
-var UserSchema = require('../schemas/User');
+var UserSchema = require('../schemas/user');
 var User = mongokeeper.db.model('User', UserSchema);
 module.exports = User;
 
