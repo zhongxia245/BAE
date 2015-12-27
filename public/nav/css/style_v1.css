@@ -1,0 +1,54 @@
+/* 导航页，简单描述风格*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~整体 start~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+body {
+    font-family: '微软雅黑';
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~风格样式 start~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.thumbnail {
+    height: 100px;
+    cursor: pointer;
+}
+
+.thumbnail:hover {
+    -moz-box-shadow: 2px 2px 20px #312433;
+    -webkit-box-shadow: 2px 2px 20px #312433;
+    box-shadow: 2px 2px 20px #312433;
+}
+
+.thumbnail:hover  strong {
+    text-shadow: 2px 2px 50px #080533;
+}
+
+.item-title {
+    border-bottom: 1px solid #C7C6C6;
+    padding: 5px;
+    margin-botton: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.item-remark {
+    height: 60px;
+    padding: 10px;
+    font-size: 10px;
+    overflow: hidden;
+    color: #777;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~返回顶部 start~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.go-top {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 9999;
+    color: #337ab7;
+    cursor: pointer;
+    display: none;
+}
+
+

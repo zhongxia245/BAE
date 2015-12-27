@@ -3,35 +3,35 @@ var router = express.Router();
 
 
 //类似拦截器，Java的过滤器
-router.use(function(req, res, next) {
+router.use(function (req, res, next) {
     console.log('zhongxia' + req.originalUrl);
     //这里设置的值，在layout所有页面共用的模板，数据可以写在这里
     res.locals = {
         motto: '青春是打开了,就合不上的书。人生是踏上了，就回不了头的路，爱情是扔出了，就收不回的赌注。',
         menus: [{
-                url: "/index",
-                title: "首页"
-            }, {
-                url: "/about",
-                title: "关于我"
-            }, {
-                url: "/riji",
-                title: "个人日记"
-            },
+            url: "/index",
+            title: "首页"
+        }, {
+            url: "/about",
+            title: "关于我"
+        }, {
+            url: "/riji",
+            title: "个人日记"
+        },
             /*
              {
-                url: "/shuo",
-                title: "碎言碎语"
-            },
+             url: "/shuo",
+             title: "碎言碎语"
+             },
              {
-                url: "/xc",
-                title: "相册展示"   //这个又点问题，懒加载的图片高度没办法自适应
-            },
-            {
-                url: "/learn",
-                title: "学无止境"
-            },
-            */
+             url: "/xc",
+             title: "相册展示"   //这个又点问题，懒加载的图片高度没办法自适应
+             },
+             {
+             url: "/learn",
+             title: "学无止境"
+             },
+             */
             {
                 url: "/guestbook",
                 title: "留言板"
@@ -93,31 +93,19 @@ router.use(function(req, res, next) {
 });
 
 /*
- //登录拦截器
-app.use(function(req, res, next) {
-    var url = req.originalUrl;
-    req.session = req.session || {};
-    if (url != "/login" && !req.session.user) {
-        return res.redirect("login");
-    }
-    next();
-});
-*/
-
-/*
-    这边要注意一个问题，那就是
-    1. 拦截器需要放在 路由处理之前，否则路由处理之后就结束了。而没有经过过滤器
-    2. 因为政策路由处理没有 使用next()
-    3. 自己的路由处理要放在错误处理之前，否则错误处理也是没有next() 直接渲染出404页面
+ 这边要注意一个问题，那就是
+ 1. 拦截器需要放在 路由处理之前，否则路由处理之后就结束了。而没有经过过滤器
+ 2. 因为政策路由处理没有 使用next()
+ 3. 自己的路由处理要放在错误处理之前，否则错误处理也是没有next() 直接渲染出404页面
  */
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     return res.redirect("/index");
 });
 
 /* GET home page. */
-router.get('/index', function(req, res, next) {
+router.get('/index', function (req, res, next) {
     res.render('blog/index', {
         title: 'blog index',
         articles: [{
@@ -181,7 +169,7 @@ router.get('/index', function(req, res, next) {
 });
 
 /* GET detail article page. */
-router.get('/index/:detail', function(req, res, next) {
+router.get('/index/:detail', function (req, res, next) {
     res.render('blog/new', {
         notUseRight: true, //不使用右侧的模板
         title: '浅谈：html5和html的区别',
@@ -193,7 +181,7 @@ router.get('/index/:detail', function(req, res, next) {
 });
 
 /* GET about page. */
-router.get('/about', function(req, res, next) {
+router.get('/about', function (req, res, next) {
     res.render('blog/about', {
         title: 'blog about',
         content: "博主是一个草根全栈开发者，数据库（SqlServer，Oracle），ASP.NET，Java,NodeJS,以及前端技术都比较熟练掌握，有独立开发项目的经验。"
@@ -201,7 +189,7 @@ router.get('/about', function(req, res, next) {
 });
 
 /* GET shuo page. */
-router.get('/shuo', function(req, res, next) {
+router.get('/shuo', function (req, res, next) {
     res.render('blog/shuo', {
         title: 'blog shuo',
         items: [{
@@ -230,7 +218,7 @@ router.get('/shuo', function(req, res, next) {
 });
 
 /* GET xc page. */
-router.get('/xc', function(req, res, next) {
+router.get('/xc', function (req, res, next) {
     res.render('blog/xc', {
         title: 'blog xc',
         items: [{
@@ -428,14 +416,14 @@ router.get('/xc', function(req, res, next) {
 });
 
 /* GET learn page. */
-router.get('/learn', function(req, res, next) {
+router.get('/learn', function (req, res, next) {
     res.render('blog/learn', {
         title: 'blog learn'
     });
 });
 
 /* GET riji page. */
-router.get('/riji', function(req, res, next) {
+router.get('/riji', function (req, res, next) {
     res.render('blog/riji', {
         title: 'blog riji',
         items: [{
@@ -472,7 +460,7 @@ router.get('/riji', function(req, res, next) {
     });
 });
 /* GET guestbook page. */
-router.get('/guestbook', function(req, res, next) {
+router.get('/guestbook', function (req, res, next) {
     res.render('blog/guestbook', {
         title: 'blog guestbook'
     });

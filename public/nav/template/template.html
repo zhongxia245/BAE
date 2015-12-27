@@ -8,46 +8,52 @@
     {{/if}}
     {{/each}}
 </script>
-<!-- 1. 常用框架集 -->
-<script id="nav_kjj" type="text/x-handlebars-template">
-    {{#each}}
-    <div class="col-xs-6  col-md-3">
-        <a href="{{url}}" class="thumbnail" target="_blank">
-            <img data-src="holder.js/100%x140" alt="{{title}}" src="{{img}}" data-holder-rendered="true" style="height: 140px; width: 100%; display: block;">
 
-            <p>{{name}}</p>
+<!-- 1. 导航页每一项的模板 -->
+<script id="tpl_nav_v1" type="text/x-handlebars-template">
+    {{#each}}
+    <div class="col-xs-6  col-md-2">
+        <a href="{{url}}" class="thumbnail" target="_blank" title="{{remark}}">
+            <img alt="{{remark}}" src="{{img}}" data-holder-rendered="true" style="height: 140px; display: block;">
+
+            <p title="{{name}}">{{name}}</p>
         </a>
     </div>
     {{/each}}
 </script>
-<!-- 2. 博客列表 -->
-<script id="nav_bkll" type="text/x-handlebars-template">
-    <div class="list-group">
-        {{#each}}
-        {{#if active}}
-        <a href="{{url}}" class="list-group-item active  col-md-5" title="{{title}}" target="_blank"><span class="badge">{{count}}</span>{{name}}</a>
-        {{else}}
-        <a href="{{url}}" class="list-group-item  col-md-5" title="{{title}}" target="_blank"><span class="badge">{{count}}</span>{{name}}</a>
-        {{/if}}
-        {{/each}}
+
+<!-- 1. 导航页每一项的模板 -->
+<script id="tpl_nav_v2" type="text/x-handlebars-template">
+    {{#each}}
+    <div class="lists">
+        <a href="{{url}}" class="thumbnail" target="_blank" title="{{remark}}">
+            <div class="list-item" style="background:url({{img}}); -moz-background-size:100% 100%; background-size:100% 100%;">
+                <div class="item-remark">
+                    <div class="inner"> {{remark}}</div>
+                </div>
+            </div>
+            <p title="{{name}}">{{name}}</p>
+        </a>
     </div>
+    {{/each}}
 </script>
-<!--面板方式的导航列表-->
-<script id="nav_bkll_title" type="text/x-handlebars-template">
-    <div class="col-xs-6 col-md-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Panel title</h3>
-            </div>
-            <div class="panel-body">
-                {{#each}}
-                {{#if active}}
-                <a href="{{url}}" class="list-group-item active" title="{{title}}" target="_blank"><span class="badge">{{count}}</span>{{name}}</a>
-                {{else}}
-                <a href="{{url}}" class="list-group-item" title="{{title}}" target="_blank"><span class="badge">{{count}}</span>{{name}}</a>
-                {{/if}}
-                {{/each}}
-            </div>
-        </div>
+
+<!-- 1. 导航页每一项的模板[目前用的版本] -->
+<script id="tpl_nav" type="text/x-handlebars-template">
+    <h3 class="page-header" name="{{name}}">{{title}}</h3>
+    <div class="row placeholders" id="id_{{name}}">
+        {{#each items}}
+        <section class="col-xs-6 col-sm-4  col-md-3 col-lg-2">
+            <a class="thumbnail" href="{{url}}" target="_blank">
+                <div title="{{name}}" class="item-title">
+                    <strong style="font-size:12px;  ">{{name}}</strong>
+                </div>
+
+                <div class="item-remark" title="{{remark}}">
+                    {{remark}}
+                </div>
+            </a>
+        </section>
+        {{/each}}
     </div>
 </script>

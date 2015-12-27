@@ -1,27 +1,32 @@
+/**
+ * Created by zhongxia on 2015/12/26.
+ */
 var mongoose = require('mongoose');
 
 /**
- * 电影模式类，提供数据库的增改改查方法
+ * 用户类
  * @type {mongoose}
  */
-var CategorySchema = new mongoose.Schema({
-    name: {type: String},
-    value: {type: String},
-    remark: {type: String},
+var UserSchema = new mongoose.Schema({
+    username: {type: String},
+    password: {type: String},
+    email: {type: String},
+    enable: {type: Boolean, default: true},   //是否启用
+    permissionLevel: {type: Number, default: 0},  //用户权限 0 表示管理员，其他目前没有
     meta: {
         createAt: {type: Date, default: Date.now()},
         updateAt: {type: Date, default: Date.now()}
     }
 });
 
-module.exports = CategorySchema;
+module.exports = UserSchema;
 
 /**
  * pre的意思：每次在存储数据之前，都会来调用该方法
  * @param  保存
  * @return {[type]}       [description]
  */
-CategorySchema.pre('save', function (next) {
+UserSchema.pre('save', function (next) {
     if (this.isNew) {
         this.meta.createAt = this.meta.updateAt = Date.now();
     } else {
@@ -32,7 +37,7 @@ CategorySchema.pre('save', function (next) {
 });
 
 //后期可以整理出来，放在Schema上
-CategorySchema.statics = {
+UserSchema.statics = {
     /**
      * 按照更新时间获取全部
      * */

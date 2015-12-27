@@ -5,9 +5,10 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var mongoosekeeper = require('../../lib/mongoosekeeper');
-var Model = require('../../models/admin/models/nav_bae');
+var Model = require('../../models/admin/models/nav');
 var router = express.Router();
 var ObjectId = mongoose.Types.ObjectId;
+
 
 /**
  * 获取常用工具集的导航地址数据][前端表格控件，指定URL，居然用Post，吐了]

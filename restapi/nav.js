@@ -6,10 +6,11 @@
 /**
  * 对外开放的RESTAPI
  */
-var express = require('express'),
-    mongoosekeeper = require('../lib/mongoosekeeper'),
-    Model = require('../models/admin/models/nav_bae'),
-    router = express.Router();
+var express = require('express');
+var mongoosekeeper = require('../lib/mongoosekeeper');
+var navModel = require('../models/admin/models/nav');
+var categoryModel = require('../models/admin/models/category');
+var router = express.Router();
 
 /**
  * 获取常用工具集的导航地址数据]
@@ -23,10 +24,24 @@ router.get('/getNav.do', function (req, res) {
         }
     }
     mongoosekeeper.use(function (proxy) {
-        Model.find(condition, proxy);
+        navModel.find(condition, proxy);
     }, function (err, data) {
         if (err) {
-            console.log('getNav error:', err);
+            return console.log('getNav error:', err);
+        }
+        res.send(data);
+    });
+});
+
+/**
+ * 获取分类,目前多表关联不是很清楚，所以用这个返回，前端处理
+ */
+router.get('/getCategory.do', function (req, res) {
+    mongoosekeeper.use(function (proxy) {
+        categoryModel.find({}, proxy);
+    }, function (err, data) {
+        if (err) {
+            return console.log('getCategory error:', err);
         }
         res.send(data);
     });

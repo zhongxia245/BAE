@@ -1,23 +1,23 @@
 [{
-    "url": "#",
+    "url": "#0",
     "name": "#id_tool",
     "title": "常用工具集",
     "active": true,
-    "template": "#nav_kjj",
+    "template": "#tpl_nav",
     "json": "data/list/tool.json",
     "rest": "/rest/getNav.do?category=tool"
 }, {
-    "url": "#",
+    "url": "#1",
     "name": "#id_kjj",
     "title": "常用框架集",
-    "template": "#nav_kjj",
+    "template": "#tpl_nav",
     "json": "data/list/kjj.json",
     "rest": "/rest/getNav.do?category=kjj"
 }, {
-    "url": "#",
+    "url": "#2",
     "name": "#id_bkll",
     "title": "博客列表",
-    "template": "#nav_bkll",
+    "template": "#tpl_nav",
     "json": "data/list/bkll.json",
     "rest": "/rest/getNav.do?category=bkll"
 }]

@@ -1,18 +1,22 @@
+/**
+ * Created by zhongxia on 2015/12/26.
+ */
 'use strict';
 /**
  * 后台管理的接口
  */
 var express = require('express');
 var mongoose = require('mongoose');
+var encrypy = require('../../lib/encrypt');
 var mongoosekeeper = require('../../lib/mongoosekeeper');
-var Model = require('../../models/admin/models/category');
+var Model = require('../../models/admin/models/user');
 var router = express.Router();
 var ObjectId = mongoose.Types.ObjectId;
 
 /**
- * 获取常用工具集的导航地址数据][前端表格控件，指定URL，居然用Post，吐了]
+ * 获取用户数据
  */
-router.get('/getCategory.do', function (req, res) {
+router.get('/getUser.do', function (req, res) {
     //get param
     var criteria = req.query;
     var page = req.query.page || 1;
@@ -37,17 +41,16 @@ router.get('/getCategory.do', function (req, res) {
 });
 
 /**
- * 添加导航数据
+ * 添加用户
  */
-router.post('/addCategory.do', function (req, res, next) {
+router.post('/addUser.do', function (req, res, next) {
     var doc = req.body;
-
+    doc['password'] = encrypy(doc['password']);
     mongoosekeeper.use(function (proxy) {
         Model.create(doc, proxy);
     }, function (err) {
         if (err) {
             return console.log(err);
-
         } else {
             res.send(true);
         }
@@ -57,7 +60,7 @@ router.post('/addCategory.do', function (req, res, next) {
 /**
  * 修改
  */
-router.post('/updateCategory.do', function (req, res, next) {
+router.post('/updateUser.do', function (req, res, next) {
     var doc = req.body;
     var update = {};
     for (var key in doc) {
@@ -90,7 +93,7 @@ router.post('/updateCategory.do', function (req, res, next) {
 /**
  * 删除,支持批量删除
  */
-router.get('/deleteCategory.do', function (req, res, next) {
+router.get('/deleteUser.do', function (req, res, next) {
     var ids = req.query.id.split(',');
 
     mongoosekeeper.use(function (proxy) {
@@ -106,23 +109,11 @@ router.get('/deleteCategory.do', function (req, res, next) {
 });
 
 /*******初始化之前的旧数据 Start****************/
-router.get('/addCategoryData.do', function (req, res, next) {
+router.get('/addUserData.do', function (req, res, next) {
     var datas = [{
-        "name": "常用工具集",
-        "value": "tool",
-        "remark": "常用的前端在线工具"
-    }, {
-        "name": "博客列表",
-        "value": "bkll",
-        "remark": "优秀博客"
-    }, {
-        "name": "框架集",
-        "value": "kjj",
-        "remark": "前端框架或者类库推荐"
-    }, {
-        "name": "优秀文章",
-        "value": "article",
-        "remark": "各类前端优秀文章"
+        "username": "zhongxia",
+        "password": "zhongxia",
+        "email": "294798491@qq.com"
     }];
     for (var i = 0, length = datas.length; i < length; i++) {
         var doc = datas[i];

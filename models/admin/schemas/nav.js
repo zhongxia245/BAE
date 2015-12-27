@@ -5,46 +5,27 @@ var mongoose = require('mongoose');
  * @type {mongoose}
  */
 var NavSchema = new mongoose.Schema({
-    name: {
-        type: String
-    },
-    title: {
-        type: String
-    },
-    url: {
-        type: String
-    },
-    category: {
-        type: String
-    },
-    count: {
-        type: Number
-    },
-    img: {
-        type: String,
-        default: 'img/kancloud.png'
-    },
-    remark: {
-        type: String
-    },
+    name: {type: String},
+    title: {type: String},
+    url: {type: String},
+    category: {type: String},
+    count: {type: Number},
+    img: {type: String, default: 'img/kancloud.png'},
+    remark: {type: String},
     meta: {
-        createAt: {
-            type: Date,
-            default: Date.now()
-        },
-        updateAt: {
-            type: Date,
-            default: Date.now()
-        }
+        createAt: {type: Date, default: Date.now()},
+        updateAt: {type: Date, default: Date.now()}
     }
 });
+
+module.exports = NavSchema;
 
 /**
  * pre的意思：每次在存储数据之前，都会来调用该方法
  * @param  保存
  * @return {[type]}       [description]
  */
-NavSchema.pre('save', function(next) {
+NavSchema.pre('save', function (next) {
     if (this.isNew) {
         this.meta.createAt = this.meta.updateAt = Date.now();
     } else {
@@ -55,25 +36,25 @@ NavSchema.pre('save', function(next) {
 });
 
 NavSchema.statics = {
-    fetch: function(cb) {
+    fetch: function (cb) {
         return this
             .find({})
             .sort('meta.updateAt')
             .exec(cb);
     },
-    findById: function(id, cb) {
+    findById: function (id, cb) {
         return this
             .findOne({
                 _id: id
             })
             .exec(cb);
     },
-    removeAll: function(cb) {
+    removeAll: function (cb) {
         return this
             .remove({})
             .exec(cb);
     },
-    execPageQuery: function(currentPage, pageSize, conditions, fields, options, callback) {
+    execPageQuery: function (currentPage, pageSize, conditions, fields, options, callback) {
         var page = {}; //总页数 总条数 集合
         //设置参数
         if ('function' == typeof conditions) {
@@ -96,13 +77,13 @@ NavSchema.statics = {
 
 
         //通过回调执行两个方法，保证同步
-        var cb = function(err, rs) {
+        var cb = function (err, rs) {
             if (err) {
                 console.log(err);
                 return;
             }
             page.Rows = rs;
-            m.count(conditions, function(err1, rs) {
+            m.count(conditions, function (err1, rs) {
                 if (err1) {
                     console.log(err1);
                     return;
@@ -125,4 +106,4 @@ NavSchema.statics = {
     }
 }
 
-module.exports = NavSchema;
+
