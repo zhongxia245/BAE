@@ -24,7 +24,7 @@
         }
     }
     exports.scrollTo = function (selector, duration, top) {
-        duration = duration || 500;
+        duration = duration || 100;
         top = top || 139;
         var offset_top = $(selector).offset().top;
         $('body').animate({
