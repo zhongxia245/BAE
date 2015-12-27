@@ -93,12 +93,12 @@ $('#id_nav_sidebar').on('click', function (e) {
 });
 
 $('#go-top').on('click', function () {
-    scrollTo("#id_tool");
+    scrollTo("#id_nav_top",300,200);
 });
 
 $(window).scroll(function () {
     var top = $(window).scrollTop();
-    if (top > 400) {
+    if (top > 100) {
         $('#go-top').show();
     } else {
         $('#go-top').hide();

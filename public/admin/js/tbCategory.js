@@ -4,14 +4,6 @@ $(function () {
     //初始化表格
     window.zx = window.zx || {};
 
-    //刷新函数
-    var loaddata = function () {
-        var key = $("#category").val();
-        if (key) {
-            grid.options.parms = {"key": key};
-        }
-    }
-
     //获取数据
     var url = '../../admin/getCategory.do';
     $("#" + tableId).ligerGrid({
@@ -24,7 +16,6 @@ $(function () {
         enabledSort:false,
         pageSize: 20,
         rownumbers: true,
-        onLoadData: loaddata,  //刷新函数
         columns: [{
             display: 'ID',
             name: '_id',

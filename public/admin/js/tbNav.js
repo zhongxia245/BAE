@@ -5,9 +5,10 @@ $(function () {
 
     //刷新函数
     var loaddata = function () {
+        var grid = new liger.get(tableId);
         var key = $("#category").val();
         if (key) {
-            grid.options.parms = {"key": key};
+            grid.options.parms = {"category": key};
         }
     }
     //获取数据
