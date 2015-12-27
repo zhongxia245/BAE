@@ -24,11 +24,12 @@
         }
     }
     exports.scrollTo = function (selector, duration, top) {
-        duration = duration || 100;
+        duration = duration || 500;
         top = top || 139;
         var offset_top = $(selector).offset().top;
+        top = offset_top - top;
         $('body').animate({
-            scrollTop: offset_top - top
+            scrollTop: top
         }, duration);
         return false;
     }
@@ -87,12 +88,11 @@ $('#id_nav_sidebar').on('click', function (e) {
     $target.parent().siblings().removeClass('active');
     $target.parent().addClass('active');
     var name = $target.attr('name');
-    console.log(name)
     scrollTo('#id_' + name);
 });
 
 $('#go-top').on('click', function () {
-    scrollTo("#top",300,200);
+    scrollTo("#top", 500, 200);
 });
 
 $(window).scroll(function () {
