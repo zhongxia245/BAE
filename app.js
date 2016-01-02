@@ -20,6 +20,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
+
+//设置静态文件的入口
 app.use(express.static(path.join(__dirname, 'public')));
 // view engine setup
 hbs.registerPartials(__dirname + '/views/partials');

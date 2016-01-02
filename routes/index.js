@@ -101,11 +101,16 @@ router.use(function (req, res, next) {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    return res.redirect("/index");
+    res.render('map', {});
 });
 
 /* GET home page. */
 router.get('/index', function (req, res, next) {
+    res.render('map', {});
+});
+
+/* GET home page. */
+router.get('/index1', function (req, res, next) {
     res.render('blog/index', {
         title: 'blog index',
         articles: [{
