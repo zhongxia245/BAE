@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>移动相册</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximun-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/animate.css/3.1.0/animate.min.css">
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    body {
+        background: black;
+    }
+    
+    ul {
+        list-style: none;
+    }
+    
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .img-item {
+        float: left;
+        overflow: hidden;
+    }
+    
+    .img-content {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: black;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- 相册开始 -->
+    <ul class="container animated bounce" id="container">
+        <li class="img-item"><img src="img/1.jpg" alt=""></li>
+        <li class="img-item"><img src="img/2.jpg" alt=""></li>
+        <li class="img-item"><img src="img/3.jpg" alt=""></li>
+        <li class="img-item"><img src="img/4.jpg" alt=""></li>
+        <li class="img-item"><img src="img/5.jpg" alt=""></li>
+    </ul>
+    <div class="img-content" id="img-content">
+        <img src="">
+    </div>
+    <!-- 相册结束 -->
+    <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+    <script src="js/zepto.touch.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var $win = $(window);
+        var winWidth = $win.width();
+        var winHeight = $win.height();
+
+        function render() {
+            var padding = 30;
+            var w = (winWidth - padding) / 2;
+            var tmp = "";
+            for (var i = 0, length1 = 10; i < length1; i++) {
+                if (i % 2 == 1) {
+                    padding = 0;
+                } else {
+                    padding = 30;
+                }
+                var imgSrc = "img/" + (i + 1) + ".jpg";
+                tmp += '<li id="' + i + '" style="width:' + w + 'px; padding-right:' + padding + 'px;" class="img-item"><img src="' + imgSrc + '" alt=""></li>';
+            }
+            $('#container').html(tmp);
+        }
+        render();
+
+
+        $('#container').on('tap', function(e) {
+            var $target = $(e.target);
+            if ($target[0].tagName === "IMG") {
+                $('#img-content').show();
+                $('#img-content>img').attr('src', $target.attr('src'))
+            }
+        });
+        $('#img-content').on('swipeLeft', function(e) {
+                $('#img-content>img').attr('src', 'img/4.jpg')
+            })
+            .on('swipeRight', function(e) {
+                $('#img-content>img').attr('src', 'img/2.jpg')
+            });
+    });
+    </script>
+</body>
+
+</html>
