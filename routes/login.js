@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
+var encrypy = require('../lib/encrypt');
 module.exports = router;
 
 router.post('/login.do', function (req, res, next) {
@@ -17,7 +18,10 @@ router.post('/login.do', function (req, res, next) {
         result['message'] = '您输入的账号或密码有误!'
     } else {
         //req.cookie.userId = '12312312312321123';
-        result['toUrl'] = '../admin/'
+        result['toUrl'] = '../admin/';
+        //res.cookie('ZXID', encrypy('zhongxia_' + new Date().getTime(), {maxAge: 10 * 1000, path: '/', httpOnly: true});
+        res.cookie('ZXID', encrypy('zhongxia_' + new Date().getTime()), {maxAge: 2 * 60 * 60 * 1000});
+        //res.redirect("/workspace");
     }
     res.send(result);
 });

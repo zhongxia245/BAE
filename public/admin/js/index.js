@@ -40,9 +40,7 @@ $(function() {
     });
 
     //面板
-    $("#left_accordion").ligerAccordion({
-        height: height-30
-    });
+    $("#left_accordion").ligerAccordion({});
 
     $(".l-link").hover(function() {
         $(this).addClass("l-link-over");

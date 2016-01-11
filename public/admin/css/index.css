@@ -52,6 +52,12 @@ body {
     padding-left: 16px;
     border: 1px solid white;
     margin: 4px;
+    text-decoration: none;
+}
+
+.zx-link:hover {
+    text-decoration: none !important;
+    text-shadow: 2px 2px 15px #333333;
 }
 
 .zx-link-over {
@@ -153,6 +159,13 @@ body {
 }
 
 /*修改ligerUI  grid 的样式*/
-.l-grid-body>.l-grid-body-inner{
-	width: auto !important;
+.l-grid-body > .l-grid-body-inner {
+    width: auto !important;
+}
+
+/*表格文字不换行，超出的部分用...代替*/
+.l-grid-row-cell-inner {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
