@@ -2,7 +2,14 @@ var tab = null;
 var accordion = null;
 var tabItems = [];
 
-$(function() {
+$(function () {
+    //注销
+    $('#logout').on('click', function () {
+        window.location = '../login/index.html';
+        $.cookie('ZXID',null,{ path: "/"}); // 删除 cookie
+        return false;  //不返回false，超链接继续跳转到本地，这里的跳转不起作用
+    });
+
     //布局
     $("#zx_layout").ligerLayout({
         leftWidth: 190,
@@ -19,11 +26,11 @@ $(function() {
         height: height,
         showSwitchInTab: true,
         showSwitch: true,
-        onAfterAddTabItem: function(tabdata) {
+        onAfterAddTabItem: function (tabdata) {
             tabItems.push(tabdata);
             saveTabStatus();
         },
-        onAfterRemoveTabItem: function(tabid) {
+        onAfterRemoveTabItem: function (tabid) {
             for (var i = 0; i < tabItems.length; i++) {
                 var o = tabItems[i];
                 if (o.tabid == tabid) {
@@ -33,7 +40,7 @@ $(function() {
                 }
             }
         },
-        onReload: function(tabdata) {
+        onReload: function (tabdata) {
             var tabid = tabdata.tabid;
             addFrameSkinLink(tabid);
         }
@@ -42,9 +49,9 @@ $(function() {
     //面板
     $("#left_accordion").ligerAccordion({});
 
-    $(".l-link").hover(function() {
+    $(".l-link").hover(function () {
         $(this).addClass("l-link-over");
-    }, function() {
+    }, function () {
         $(this).removeClass("l-link-over");
     });
 
@@ -80,15 +87,15 @@ function f_addTab(tabid, text, url) {
         tabid: tabid,
         text: text,
         url: url,
-        callback: function() {
+        callback: function () {
             addFrameSkinLink(tabid);
         }
     });
 }
 
 /*
-* 切换皮肤
-* */
+ * 切换皮肤
+ * */
 function addFrameSkinLink(tabid) {
     var prevHref = getLinkPrevHref(tabid) || "";
     var skin = getQueryString("skin");

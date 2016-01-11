@@ -112,6 +112,16 @@ body {
     text-decoration: underline
 }
 
+.zx-topmenu .left {
+    float: left;
+}
+
+.zx-topmenu .right {
+    float: right;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
 .body-gray2014 #framecenter {
     margin-top: 3px;
 }
