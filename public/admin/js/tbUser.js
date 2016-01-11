@@ -95,7 +95,7 @@ var tableHandler = (function () {
     function addClick(item) {
         $.ligerDialog.open({
             target: $('#form'),
-            height: 250,
+            height: 280,
             width: 540,
             buttons: [{
                 text: '保存',
@@ -140,7 +140,7 @@ var tableHandler = (function () {
         setData(oldData);
         $.ligerDialog.open({
             target: $('#form'),
-            height: 250,
+            height: 280,
             width: 540,
             buttons: [{
                 text: '保存',

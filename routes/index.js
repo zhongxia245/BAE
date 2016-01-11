@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 //类似拦截器，Java的过滤器
-router.use(function (req, res, next) {
+/*router.use(function (req, res, next) {
     console.log('zhongxia' + req.originalUrl);
     //这里设置的值，在layout所有页面共用的模板，数据可以写在这里
     res.locals = {
@@ -18,7 +18,7 @@ router.use(function (req, res, next) {
             url: "/riji",
             title: "个人日记"
         },
-            /*
+            /!*
              {
              url: "/shuo",
              title: "碎言碎语"
@@ -31,7 +31,7 @@ router.use(function (req, res, next) {
              url: "/learn",
              title: "学无止境"
              },
-             */
+             *!/
             {
                 url: "/guestbook",
                 title: "留言板"
@@ -90,7 +90,7 @@ router.use(function (req, res, next) {
         }]
     };
     next();
-});
+});*/
 
 /*
  这边要注意一个问题，那就是
