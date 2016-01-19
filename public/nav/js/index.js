@@ -75,6 +75,9 @@ $.getJSON(config.categoryUrl, function (categorys) {
             window.render(config.id_main, config.tpl_main, data, true);
         }
         window.render(config.id_sidebar, config.tpl_sidebar, sidebarData);
+
+        //显示footer
+        $('footer').show();
     });
 });
 

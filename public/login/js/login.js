@@ -1,5 +1,9 @@
 var loginUrl = '/login.do';
-$(function() {
+var toAdmin = '../admin/';
+$(function () {
+    if ($.cookie('ZXID')) {
+        window.location = toAdmin;
+    }
     $('#username').focus(); //刚进来，用户名文本框获取焦点
     initAnimation();
     bindEvent();
@@ -11,12 +15,12 @@ $(function() {
  */
 function initAnimation() {
     //得到焦点
-    $("#password").focus(function() {
+    $("#password").focus(function () {
         $("#left_hand").animate({
             left: "150",
             top: " -38"
         }, {
-            step: function() {
+            step: function () {
                 if (parseInt($("#left_hand").css("left")) > 140) {
                     $("#left_hand").attr("class", "left_hand");
                 }
@@ -26,7 +30,7 @@ function initAnimation() {
             right: "-64",
             top: "-38px"
         }, {
-            step: function() {
+            step: function () {
                 if (parseInt($("#right_hand").css("right")) > -70) {
                     $("#right_hand").attr("class", "right_hand");
                 }
@@ -34,7 +38,7 @@ function initAnimation() {
         }, 2000);
     });
     //失去焦点
-    $("#password").blur(function() {
+    $("#password").blur(function () {
         $("#left_hand").attr("class", "initial_left_hand");
         $("#left_hand").attr("style", "left:100px;top:-12px;");
         $("#right_hand").attr("class", "initial_right_hand");
@@ -60,7 +64,6 @@ function bindEvent() {
  */
 function fn_login() {
     console.log('login');
-    var $login = $('#btn_login');
     $('body').focus(); //让其他随便一个获取焦点，目的：在文本框回车，如果验证没通过，则显示红色边框
     var flag_validate = true;
     var $username = $('#username');
@@ -81,7 +84,7 @@ function fn_login() {
     //验证通过
     if (flag_validate) {
         var url = loginUrl;
-        $.post(url, user, function(data, textStatus, xhr) {
+        $.post(url, user, function (data, textStatus, xhr) {
             if (data.code == 0) {
                 showNotice('btn_login', data.message);
             } else {
@@ -123,17 +126,15 @@ function fn_enterLogin(e) {
 function showNotice(id, msg, duration) {
     duration = duration || 1500;
     var $login = $('#' + id);
-    $login.attr('disabled', 'disabled');
-    $login.addClass('login-btn-disabled');
+    $login.attr('disabled', 'disabled').addClass('login-btn-disabled');
     var notification = new NotificationFx({
         message: msg,
         layout: 'growl',
         effect: 'scale',
         ttl: duration,
         type: 'error', // notice, warning, error or success
-        onClose: function() {
-            $login.removeAttr('disabled');
-            $login.removeClass('login-btn-disabled');
+        onClose: function () {
+            $login.removeAttr('disabled').removeClass('login-btn-disabled');
         }
     });
     // show the notification

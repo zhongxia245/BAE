@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>移动相册</title>
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+</head>
+
+<body>
+    <ul class="img-container" id="container">
+        <li><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+        <li><img src="img/3.jpg" alt=""></li>
+        <li><img src="img/4.jpg" alt=""></li>
+        <li><img src="img/5.jpg" alt=""></li>
+    </ul>
+    <div class="large animated fadeIn" id="large-container">
+        <img id="large-img">
+    </div>
+    <script src="js/zepto.min.js"></script>
+    <script type="text/javascript">
+    var total = 17; //图片总数
+    var zWin = $(window); //浏览器对象
+    var wImage = $('#large-img'); //大图对象
+    var domImage = wImage[0];
+    var cid; //当前图片位置
+    var lock = false;
+
+    /**
+     * 渲染生成图片
+     */
+    var render = function() {
+        var padding = 2;
+        var winWidth = zWin.width();
+        var winHeight = zWin.height();
+        var picWidth = Math.floor((winWidth - padding * 3) / 4);
+        var tmp = '';
+        for (var i = 1; i <= total; i++) {
+            var imgSrc = 'img/' + i + '.jpg';
+            var pl = padding;
+            if (i % 4 == 1) {
+                pl = 0;
+            }
+            tmp += '<li data-id="' + i + '" class="animated bounceIn" style="padding-top:' + padding + 'px;padding-left:' + pl + 'px;width:' + picWidth + 'px;height:' + picWidth + 'px;"><canvas id="cvs_' + i + '"></canvas></li>';
+
+            //使用 canvas 在移动端会使用 GPU渲染，效率更高
+            var imageObj = new Image();
+            imageObj.index = i;
+            imageObj.onload = function() {
+                var cvs = $('#cvs_' + this.index)[0].getContext('2d');
+                cvs.width = this.width;
+                cvs.height = this.height;
+                cvs.drawImage(this, 0, 0);
+            }
+            imageObj.src = imgSrc;
+        };
+        $('#container').html(tmp);
+    }
+
+    /**
+     * 加载图片
+     * @param  {[string]}   id     [图片的编号，理论上已经是图片地址]
+     * @param  {Function} callback [回调函数]
+     */
+    function loadImg(id, callback) {
+        $('#large-container').css({
+            width: zWin.width(),
+            height: zWin.height()
+        }).show();
+
+        var imgSrc = 'img/' + id + '.large.jpg';
+        var imageObj = new Image();
+        imageObj.src = imgSrc;
+        imageObj.onload = function() {
+            // 图片真实宽高
+            var w = this.width;
+            var h = this.height;
+            // 屏幕寛高
+            var winWidth = zWin.width();
+            var winHeight = zWin.height();
+
+            //真实的宽高 = 屏幕宽高 * 图片比例；
+            var realW = winHeight * w / h;
+            var realH = winWidth * h / w;
+            var paddingLeft = parseInt((winWidth - realW) / 2);
+            var paddingTop = parseInt((winHeight - realH) / 2);
+            wImage.css({
+                "height": 'auto',
+                "width": 'auto',
+                "padding-left": '0px',
+                "padding-top": '0px'
+            });
+            if (h / w > 1.2) {
+                wImage.attr('src', imgSrc).css({
+                    "height": winHeight,
+                    "padding-left": paddingLeft
+                });
+            } else {
+                wImage.attr('src', imgSrc).css({
+                    "width": winWidth,
+                    "padding-top": paddingTop
+                });
+            }
+            callback && callback();
+        }
+    }
+
+    /**
+     * 初始化
+     */
+    function init() {
+        render();
+        $('#container').delegate('li', 'tap', function() {
+            var _id = cid = $(this).attr('data-id');
+            loadImg(_id);
+        });
+        $('#large-container').tap(function() {
+                $(this).hide();
+            })
+            .swipeLeft(function() {
+                if (lock) {
+                	console.log('你TM那么快，干嘛');
+                    return;
+                }
+                lock = true;
+                cid++;
+                if (cid > total) {
+                    cid = total;
+                } else {
+                    loadImg(cid, function() {
+                        /*JS原生，目前移动端都有这个动画加载结束的事件，不用担心兼容性问题，90%已经兼容了*/
+                        domImage.addEventListener('webkitAnimationEnd', function() {
+                            wImage.removeClass('animated bounceInRight');
+                            domImage.removeEventListener('webkitAnimationEnd');
+                            lock = false;
+                        }, false);
+                        wImage.addClass('animated bounceInRight');
+                    });
+                }
+            })
+            .swipeRight(function() {
+                if (lock) {
+                	console.log('你TM那么快，干嘛');
+                    return;
+                }
+                lock = true;
+                cid--;
+                if (cid < 1) {
+                    cid = 1;
+                } else {
+                    loadImg(cid, function() {
+                        domImage.addEventListener('webkitAnimationEnd', function() {
+                            wImage.removeClass('animated bounceInLeft');
+                            domImage.removeEventListener('webkitAnimationEnd');
+                            lock = false;
+                        }, false);
+                        wImage.addClass('animated bounceInLeft');
+                    });
+                }
+            });
+    }
+
+    init();
+    </script>
+</body>
+
+</html>
