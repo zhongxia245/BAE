@@ -50,6 +50,13 @@ a:hover {
     color: #337ab7;
     cursor: pointer;
     display: none;
+    font-size: 40px;
+}
+
+.go-top:hover{
+    -moz-box-shadow: 2px 2px 20px #312433;
+    -webkit-box-shadow: 2px 2px 20px #312433;
+    box-shadow: 2px 2px 20px #312433;
 }
 
 footer {
