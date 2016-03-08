@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>复利计算</title>
+</head>
+
+<body>
+    <h2>复利计算</h2>
+    <label for="input_benjin">
+        本金：
+        <input id="input_benjin" type="text" value="50000">
+    </label>
+    <label for="input_fuli">
+        利率：
+        <input id="input_fuli" type="text" value="0.1">
+    </label>
+    <label for="input_time">
+        年限：
+        <input id="input_time" type="text" value="10">
+    </label>
+    <label for="input_zhuijia">
+        <input id="input_zhuijia" type="checkbox">是否追加
+    </label>
+    <button id="btn_start">开始计算</button>
+    <button id="btn_clear">清除</button>
+    <h4 id="text"></h4>
+</body>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    $('#btn_start').on('click', function() {
+        var benjin = parseFloat($('#input_benjin').val());
+        var fuli = parseFloat($('#input_fuli').val());
+        var count = parseFloat($('#input_time').val());
+        var i = 1;
+        var result = benjin;
+        var flag = $("#input_zhuijia").prop("checked");
+        $('#text').append('<p>本金:' + (benjin) + '元</p>')
+        var timer = setInterval(function() {
+            if (i <= count) {
+                if (flag) {
+                    var oldresult = result;
+                    var oldshouyi = oldresult - benjin * i;
+                    result = parseFloat(oldresult * (1 + fuli) + benjin).toFixed(2);
+                    $('#text').append("第" + (i++) + "年==>总金额：" + result + "==>年收益:" + (result - benjin * i - oldshouyi) + "</br>");
+                } else {
+                    result = parseFloat(result * (1 + fuli)).toFixed(2);
+                    $('#text').append("第" + (i++) + "年==>总金额：" + result + "==>年收益:" + (result - benjin) + "</br>");
+                }
+            } else {
+                if (flag) {
+                    $('#text').append('<p>总收益:' + (result - benjin * i) + '</p>')
+                } else {
+                    $('#text').append('<p>总收益:' + (result - benjin) + '</p>')
+                }
+                $('#text').append('<p>计算结束!</p>')
+                clearInterval(timer);
+            }
+        }, 500)
+    });
+
+    $('#btn_clear').on('click', function() {
+        $('#text').text("");
+    });
+});
+</script>
+
+</html>
