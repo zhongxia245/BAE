@@ -3,42 +3,30 @@
 
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>手机横、竖屏事件</title>
-    <script language="javascript" type="text/javascript">
-    //屏幕方向标识，0横屏，其他值竖屏
-    var orientation = 0;
-    //转屏事件，内部功能可以自定义
-    function screenOrientationEvent() {
-        if (orientation == 0) document.getElementById("change").value = "竖";
-        else document.getElementById("change").value = "横";
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <title>DEMO 地图导航</title>
+    <style type="text/css">
+    body {
+        background: #E9E9E9;
     }
-    var innerWidthTmp = window.innerWidth;
-    //横竖屏事件监听方法
-    function screenOrientationListener() {
-        try {
-            var iw = window.innerWidth;
-            //屏幕方向改变处理
-            if (iw != innerWidthTmp) {
-                if (iw > window.innerHeight) orientation = 90;
-                else orientation = 0;
-                //调用转屏事件
-                screenOrientationEvent();
-                innerWidthTmp = iw;
-            }
-        } catch (e) {
-            alert(e);
-        };
-        //间隔固定事件检查是否转屏，默认500毫秒
-        setTimeout("screenOrientationListener()", 500);
+    
+    ul,
+    li {
+        list-style: none;
     }
-    //启动横竖屏事件监听
-    screenOrientationListener();
-    </script>
+    
+    li {
+        margin-top: 10px;
+        font-size: 1.5rem;
+    }
+    </style>
 </head>
 
-<body onload="screenOrientationEvent()">
-    <input id="change" type="text" value="" />
+<body>
+    <ul>
+        <li><a href="demo1.html">横竖屏切换功能</a></li>
+        <li><a href="fullpanel.html">全屏打开功能</a></li>
+    </ul>
 </body>
 
 </html>
