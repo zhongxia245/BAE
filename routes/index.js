@@ -106,7 +106,7 @@ router.get('/', function (req, res, next) {
 
 /* GET home page. */
 router.get('/index', function (req, res, next) {
-    res.render('map', {});
+    res.render('layout1', {});
 });
 
 /* GET home page. */
