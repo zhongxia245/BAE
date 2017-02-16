@@ -21,5 +21,10 @@ module.exports = {
     'user': '4a2a3087b2bc47a4b7f09e43c41073f3',
     'passwd': '836dd0e7456e474f8054e6e11c435786'
   },
+  wechat: {
+    appID: 'wx9455c903881f5334',
+    appSecret: 'ac41051513de4ed8721318c4189b943f',
+    token: 'zhongxia'
+  },
   cross_domain: true //是否跨域
 };

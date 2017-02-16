@@ -11,14 +11,18 @@ var middlewareRoute = require('./routes/preRoute');
 var route = require('./routes/route');
 var errorRoute = require('./routes/errorRoute');
 
+// 微信config
+var wechat = require('./wechat/wechat')
+var wechatConfig = require('./wechat/index')
+
 var app = express();
-module.exports = app;
+
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 
 //设置静态文件的入口
@@ -33,4 +37,7 @@ app.use(middlewareRoute);
 app.use(route);
 app.use(errorRoute);
 
+//调用中间件，来实现里面的微信逻辑
+app.use(wechat(wechatConfig.wechat))
 
+module.exports = app;
