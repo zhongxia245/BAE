@@ -26,5 +26,6 @@ module.exports = {
     token: 'zhongxia',
     encodingAESKey: 'H9WaLug7Ygh2ALL9hfbPOAgoL5cjvDvnLwgxaVzqbuW'
   },
+  xinzhi_apikey: 'uuouzg5fak6iqgcv',
   cross_domain: true //是否跨域
 };
