@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "dev": "export NODE_ENV=dev && nodemon server.js"
+    "dev": "export NODE_ENV=development && nodemon server.js"
   },
   "dependencies": {
     "bluebird": "^3.4.7",

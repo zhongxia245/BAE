@@ -1,11 +1,8 @@
 /**
  * Created by zhongxia on 2015/12/26.
- */
-console.log('ErrorRoute')
-/*
  * 路由处理之后，还能到这边来的话，那么正常就是错误的处理
  * 这里主要放一些错误的处理
- * */
+ */
 var express = require('express');
 var app = express.Router();
 module.exports = app;

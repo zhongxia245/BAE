@@ -1,33 +1,30 @@
 /**
  * Created by zhongxia on 2015/12/26.
  */
-console.log('Route')
 var express = require('express');
 var wechat = require('wechat');
 var config = require('../config');
 
-var app = express.Router();
+var router = express.Router();
 
 //0. 加载模块
 var routes = require('./index');
 var login = require('./login');
+
 //RESTAPI
 var navRoute = require('./../restapi/nav');
 var adminRoute = require('./admin/navApi');
 var categoryRoute = require('./admin/categoryApi');
 var userRoute = require('./admin/userApi');
 
-// wechat
-var wechatRoute = require('./wechat/index')
-
 //2. 路由处理
-app.use('/', routes);
-app.use('/', login);
-// app.use('/', wechatRoute);
-app.use('/admin', adminRoute);
-app.use('/admin', categoryRoute);
-app.use('/admin', userRoute);
-app.use('/rest', navRoute);
+router.use('/', routes);
+router.use('/', login);
+// router.use('/', wechatRoute);
+router.use('/admin', adminRoute);
+router.use('/admin', categoryRoute);
+router.use('/admin', userRoute);
+router.use('/rest', navRoute);
 
 var config = {
   token: config.wechat.token,
@@ -36,7 +33,7 @@ var config = {
   checkSignature: false // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
 };
 
-app.use('/wechat', wechat(config, function (req, res, next) {
+router.all('/wechat', wechat(config, function (req, res, next) {
   // 微信输入信息都在req.weixin上
   var message = req.weixin;
 
@@ -76,4 +73,4 @@ app.use('/wechat', wechat(config, function (req, res, next) {
   }
 }));
 
-module.exports = app;
+module.exports = router;
