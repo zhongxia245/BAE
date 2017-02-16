@@ -13,10 +13,6 @@ var route = require('./routes/route');
 var errorRoute = require('./routes/errorRoute');
 var config = require('./config')
 
-// 微信config
-// var wechat = require('./wechat/wechat')
-// var wechatConfig = require('./wechat/index')
-
 var app = express();
 
 
@@ -38,16 +34,5 @@ app.set('view engine', 'hbs');
 app.use(middlewareRoute);
 app.use(route);
 app.use(errorRoute);
-
-//调用中间件，来实现里面的微信逻辑
-// app.use(wechat(wechatConfig.wechat))
-
-var wechat = require('wechat');
-var config = {
-  token: 'token',
-  appid: 'appid',
-  encodingAESKey: 'encodinAESKey',
-  checkSignature: true // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
-};
 
 module.exports = app;

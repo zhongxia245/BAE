@@ -28,6 +28,7 @@ if (config.cross_domain) {
 }
 // 设置cookie
 app.use(cookieParser({ name: 'zhongxia' }));
+
 // 设置 Session
 app.use(session({
     resave: false,
@@ -35,14 +36,13 @@ app.use(session({
     secret: 'keyboard cat'
 }))
 
-
 //判断是BAE环境，还是开发环境
-if (config.type === 'bae') {
-    console.log(new Date() + ' : use bae  mongodb...');
-    mongoosekeeper.config(config.baeDb);
-    //开发环境，则使用日志
-} else if (config.type === 'dev') {
+if (process.env.NODE_ENV === 'dev') {
     console.log(new Date() + ' : use localhost mongodb...');
     mongoosekeeper.config(config.localDb);
+    //开发环境，则使用日志
+} else {
+    console.log(new Date() + ' : use bae  mongodb...');
+    mongoosekeeper.config(config.baeDb);
 }
 
