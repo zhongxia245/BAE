@@ -29,18 +29,19 @@ app.use('/admin', categoryRoute);
 app.use('/admin', userRoute);
 app.use('/rest', navRoute);
 
-
 var config = {
   token: config.wechat.token,
   appid: config.wechat.appid,
-  encodingAESKey: 'H9WaLug7Ygh2ALL9hfbPOAgoL5cjvDvnLwgxaVzqbuW',
-  checkSignature: true // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
+  encodingAESKey: config.wechat.encodingAESKey,
+  checkSignature: false // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
 };
-
 
 app.use('/wechat', wechat(config, function (req, res, next) {
   // 微信输入信息都在req.weixin上
   var message = req.weixin;
+
+  config.log('message', message)
+
   if (message.FromUserName === 'diaosi') {
     // 回复屌丝(普通回复)
     res.reply('hehe');

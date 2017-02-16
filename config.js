@@ -24,7 +24,8 @@ module.exports = {
   wechat: {
     appid: 'wx9455c903881f5334',
     appSecret: 'ac41051513de4ed8721318c4189b943f',
-    token: 'zhongxia'
+    token: 'zhongxia',
+    encodingAESKey: 'H9WaLug7Ygh2ALL9hfbPOAgoL5cjvDvnLwgxaVzqbuW'
   },
   cross_domain: true //是否跨域
 };
