@@ -22,7 +22,7 @@ module.exports = {
     'passwd': '836dd0e7456e474f8054e6e11c435786'
   },
   wechat: {
-    appID: 'wx9455c903881f5334',
+    appid: 'wx9455c903881f5334',
     appSecret: 'ac41051513de4ed8721318c4189b943f',
     token: 'zhongxia'
   },
