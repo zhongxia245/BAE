@@ -79,7 +79,7 @@ Wechat.prototype.updateAccessToken = function () {
 module.exports = function (opts) {
   var wechat = new Wechat(opts);  //我们实例化一下Wechat，就可以在中间件中直接调用了
 
-  return function* (next) {
+  return function (next) {
     console.log(this.query)
     var token = opts.token;
     var signature = this.query.signature;
