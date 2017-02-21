@@ -7,23 +7,6 @@
     <link type="text/css" rel="stylesheet" href="css/css.css" />
     <link type="text/css" rel="stylesheet" href="css/jquery.tool.css" />
     <link type="text/css" rel="stylesheet" href="css/smartMenu.css" />
-    <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-    <script type="text/javascript" src="js/jquery.tool.js"></script>
-    <script type="text/javascript" src="js/shortcut.js"></script>
-    <script type="text/javascript" src="js/templates.js"></script>
-    <script type="text/javascript" src="js/jquery-smartMenu.js"></script>
-    <script type="text/javascript" src="js/core.js"></script>
-    <script type="text/javascript">
-    $(document.body).append('<div class="bgloader" style="background:url(img/ui/loader.gif) no-repeat #fff center;z-index:10000;position:absolute;top:0;left:0;width:100%;height:100%"></div>');
-    $().ready(function() {
-        //IE下禁止选中
-        document.body.onselectstart = document.body.ondrag = function() {
-                return false;
-            }
-            //初始化
-        Core.init();
-    });
-    </script>
     <!--[if lte IE 8]>
         <noscript>
         <style>
@@ -56,7 +39,8 @@
         <![endif]-->
 </head>
 
-<body id="lxcn" style="background:url(images/background.jpg) repeat right bottom transparent;">
+<body id="lxcn">
+    <canvas id="canvas"></canvas>
     <div id="task-bar">
         <ul class="task-window">
         </ul>
@@ -67,6 +51,24 @@
     <div id="desk">
         <ul></ul>
     </div>
+    <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tool.js"></script>
+    <script type="text/javascript" src="js/shortcut.js"></script>
+    <script type="text/javascript" src="js/templates.js"></script>
+    <script type="text/javascript" src="js/jquery-smartMenu.js"></script>
+    <script type="text/javascript" src="js/core.js"></script>
+    <script type="text/javascript" src="js/canvas.js"></script>
+    <script type="text/javascript">
+        $(document.body).append('<div class="bgloader" style="background:url(img/ui/loader.gif) no-repeat #fff center;z-index:10000;position:absolute;top:0;left:0;width:100%;height:100%"></div>');
+        $().ready(function () {
+            //IE下禁止选中
+            document.body.onselectstart = document.body.ondrag = function () {
+                return false;
+            }
+            //初始化
+            Core.init();
+        });
+    </script>
 </body>
 
 </html>

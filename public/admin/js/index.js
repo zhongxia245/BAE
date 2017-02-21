@@ -3,13 +3,6 @@ var accordion = null;
 var tabItems = [];
 
 $(function () {
-    //注销
-    $('#logout').on('click', function () {
-        window.location = '../login/index.html';
-        $.cookie('ZXID',null,{ path: "/"}); // 删除 cookie
-        return false;  //不返回false，超链接继续跳转到本地，这里的跳转不起作用
-    });
-
     //布局
     $("#zx_layout").ligerLayout({
         leftWidth: 190,

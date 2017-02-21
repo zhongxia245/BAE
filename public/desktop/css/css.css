@@ -5,6 +5,7 @@ a:hover{text-decoration:underline;color:#1298F4}
 a img{border:none}
 .fr{float:right}
 .fl{float:left}
+html{height: 100%;}
 body{height:100%;font:12px/1.8 Microsoft YaHei,simsong;height:100%;overflow:hidden}
 
 /*noscript*/

@@ -1,9 +1,6 @@
 var loginUrl = '/login.do';
 var toAdmin = '../admin/';
 $(function () {
-    if ($.cookie('ZXID')) {
-        window.location = toAdmin;
-    }
     $('#username').focus(); //刚进来，用户名文本框获取焦点
     initAnimation();
     bindEvent();
@@ -16,26 +13,29 @@ $(function () {
 function initAnimation() {
     //得到焦点
     $("#password").focus(function () {
+
         $("#left_hand").animate({
             left: "150",
             top: " -38"
-        }, {
-            step: function () {
-                if (parseInt($("#left_hand").css("left")) > 140) {
-                    $("#left_hand").attr("class", "left_hand");
+        },
+            {
+                step: function () {
+                    if (parseInt($("#left_hand").css("left")) > 140) {
+                        $("#left_hand").attr("class", "left_hand");
+                    }
                 }
-            }
-        }, 2000);
+            }, 2000);
+
         $("#right_hand").animate({
             right: "-64",
             top: "-38px"
         }, {
-            step: function () {
-                if (parseInt($("#right_hand").css("right")) > -70) {
-                    $("#right_hand").attr("class", "right_hand");
+                step: function () {
+                    if (parseInt($("#right_hand").css("right")) > -70) {
+                        $("#right_hand").attr("class", "right_hand");
+                    }
                 }
-            }
-        }, 2000);
+            }, 2000);
     });
     //失去焦点
     $("#password").blur(function () {
